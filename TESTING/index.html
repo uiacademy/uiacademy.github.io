@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Testavimas</title>
+
+		<meta name="description" content="Testavimas, raktas į sistemos stabilizavimą">
+		<meta name="author" content="Darius Ašeriškis">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../revealjs/css/reveal.min.css">
+		<link rel="stylesheet" href="../revealjs/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../revealjs/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../revealjs/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../revealjs/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+        <div class="overlay" >
+            <div class="overlay-icon"></div>
+            <div class="overlay-line"></div>
+        </div>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Testavimas</h1>
+					<h3>Raktas į stabilią sistemą </h3>
+					<p>
+						<small>Darius Ašeriškis</small>
+					</p>
+				</section>
+                
+                
+                <section>
+					<h2>Šiandien</h2>
+					<ul>
+                        <li>
+                            Įžanga
+                        </li>
+                        <li>
+                            Vienetų testavimas
+                        </li>
+                        <li>
+                            Automatizuotas vartotojų testavimas 
+                        </li>
+                        <li>
+                            Testavimu paremtas programavimas
+                        </li>
+                    </ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>Įžanga</h2>
+					</section>
+					<section>
+						<h2>Testavimas (1)</h2>
+						<p>Testavimas tai būdas užtikrinti kad programa atitinka užsakovo lūkesčius</p>
+                        <p>Automatizuotas testavimas - tai testavimas aliekamas automatizuotomis priemonėmis</p>
+					</section>
+					<section>
+						<h2>Testavimas (2)</h2>
+                        <p>Vienetų testavimas - tai testai užrašyti vienam kodo vienetui (pvz. funkcija) </p>
+                        <p>Integracinis testavimas - tai testai užtikrinantys teisingą kodo vienetų saveiką </p>
+                        <p>Automatizuotas vartotojų testavimas - tai testavimas programinėmis priemonės imituojant tikro vartotojo veiklą</p>
+					</section>
+				</section>
+                
+                
+				<section>
+					<section>
+						<h2>Vienetų testavimas</h2>
+					</section>
+					<section>
+                        <h2>
+                            Testų rinkinys
+                        </h2>
+                        <ul>
+                            <li>
+                                Sudaromas kiekvienai klasei ar komponentui
+                            </li>
+                            <li>
+                                Testų rinkinį sudaro testai individulioms funkcijoms
+                            </li>
+                            <li>
+                                Testais bandome padengti kodo logiką
+                            </li>
+                        </ul>
+					</section>
+					<section>
+						<h2>Užduotis 1. Pirmasis vienetų testas</h2>
+					</section>
+					<section>
+						<h2>Testavimo terpė</h2>
+						<ul>
+                            <li>
+                                Naršyklėje
+                            </li>
+                            <li>
+                                Simuliojamoje naršyklėje
+                            </li>
+                            <li>
+                                Severyje
+                            </li>
+                        </ul>
+					</section>
+                    
+                    <section>
+						<h2>Testai serveryje</h2>
+                        <ul>
+                            <li>
+                                Pliusai: 
+                                
+                                <ul>
+                                    <li>Didelis greitis</li>
+                                    <li>Testai nepriklausomi nuo naršyklės</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Minusai
+                                <ul>
+                                    <li>Sudetingiau paruošti programą </li>
+                                    <li>Nėra užtikrintas veikimas naršyklėje</li>
+                                </ul>
+                            </li>
+                        </ul>
+					</section>
+                    
+                    <section>
+						<h2>Testai simuliatoriuje</h2>
+                        <ul>
+                            <li>
+                                Pliusai: 
+                                
+                                <ul>
+                                    <li>Vidutinis greitis</li>
+                                    <li>Testai nepriklausomi nuo naršyklės</li>
+                                    <li>Tapati programa naršyklėje</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Minusai
+                                <ul>
+                                    <li>Nėra išvystyta infrastruktūra</li>
+                                    <li>Nėra užtikrintas veikimas naršyklėje</li>
+                                </ul>
+                            </li>
+                        </ul>
+					</section>
+                    
+                    <section>
+						<h2>Testai naršyklėje</h2>
+                        <ul>
+                            <li>
+                                Pliusai: 
+                                
+                                <ul>
+                                    <li>Reali veikimo terpė</li>
+                                    <li>Tapati programa naršyklėje</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Minusai
+                                <ul>
+                                    <li>Lėti testai</li>
+                                    <li>Sudėtingesni testai</li>
+                                </ul>
+                            </li>
+                        </ul>
+					</section>
+                    
+                    <section>
+						<h2>Užduotis 2. Ištestuokite pateiktą klasę</h2>
+					</section>
+                    
+                    <section>
+						<h2>Kodo restruktūrizacija</h2>
+                        <ul>
+                            <li>
+                                Reikia suskaidyti kodą į testuojamus vienetus
+                            </li>
+                            <li>
+                                Atskirti kodą, kurį testuoti sunku ar neprasminga
+                            </li>
+                            <li>
+                                Panaikinti DOM priklausomybę
+                            </li>
+                            <li>
+                                Testus rašyti reikia tokius, kad teiktų didžiausią naudą
+                            </li>
+                        </ul>
+					</section>
+                    
+                    <section>
+						<h2>Užduotis 3. Pertvarkykite ir ištestuokite pateiktą klasę</h2>
+					</section>
+                    
+				</section>
+                
+				<section>
+					<section>
+						<h2>Automatizuotas vartotojų testavimas</h2>
+						<p>
+							Imituojama vartotojo elgsena ir tikrinama ar gauti rezultatai kurių tikėtasi
+						</p>
+                        <p>
+                            Pvz. Paspaudus mygtuką pasirodo dialogas.
+                        </p>
+					</section>
+					<section>
+						<h2>Variantai</h2>
+						<ul>
+                            <li>
+                                Tikros naršyklės
+                            </li>
+                            <li>
+                                Headless našyklės
+                            </li>
+                        </ul>
+					</section>
+					<section>
+						<h2>Galimybės</h2>
+						<ul>
+                            <li>
+                                Viena naršyklė
+                            </li>
+                            <li>
+                                Selenium gridas
+                            </li>
+                            <li>
+                                Trečios šalies servisas
+                            </li>
+                        </ul>
+					</section>
+                    
+                    
+					<section>
+						<h2>Užduotis 1. Pirmasis testas</h2>
+					</section>   
+                    
+                            
+					<section>
+						<h2>Įvertinimas</h2>
+						<ul>
+                            <li>
+                                Minusai:
+                                <ul>
+                                    <li>Palaikymas sudėtingas</li>
+                                    <li>Naršyklių skirtumai</li>
+                                    <li>Tinklo palaikymas</li>
+                                </ul>
+                                
+                            </li>
+                            <li>
+                                Pliusai:
+                                <ul>
+                                    <li>Tikra naršyklė</li>
+                                    <li>Tikra vartotojo sąveika</li>
+                                    <li>Platus testavimas</li>
+                                </ul>
+                            </li>
+                        </ul>
+					</section>
+                    
+					<section>
+						<h2>Užduotis 2. Palaikymas</h2>
+					</section>
+                    
+				</section>
+                
+				<section>
+					<section>
+						<h2>Testavimu paremtas programavimas</h2>
+					</section>
+					<section>
+						<h2>Testas prieš programą</h2>
+						<p>Testas rašomas prieš programuojant logiką</p>
+					</section>
+					<section>
+						<h2>Testo sudarymas jau egzistuojančiam kodui</h2>
+						<ol>
+                            <li>Parašomas testas egzistuojančiam kodui</li>
+                            <li>Keičiamas kodas išlaikant sistemos funkcionalumą</li>
+                        </ol>
+					</section>
+                    <section>
+                        <h2>Užduotis 1. Kodo keitimas</h2>
+                    </section>
+                    
+					<section>
+						<h2>Bibliotekos</h2>
+						<ul>
+                            <li>
+                                Mocha, chai
+                            </li>
+                            <li>
+                                Jasmine
+                            </li>
+                            <li>
+                                QUnit
+                            </li>
+                        </ul>
+					</section>
+                    
+                    <section>
+						<h2>Papildomi įrankiai</h2>
+						<ul>
+                            <li>
+                                Sinon
+                            </li>
+                            <li>
+                                Karma
+                            </li>
+                        </ul>
+					</section>
+                    
+                    <section>
+						<h2>Užduotis 2. Geras ar blogas testas</h2>
+					</section>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Trumpai</h2>
+						<ul>
+                            <li>
+                                Pagrindiniai testavimo būdai: vienetų ir vartotojo testavimas
+                            </li>
+                            <li>
+                                Išmokome testų rašymo
+                            </li>
+                            <li>Testavimo infrastuktūra gali būti lokali arba trečių šalių</li>
+                        </ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Ačiū</h2>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../revealjs/lib/js/head.min.js"></script>
+		<script src="../revealjs/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

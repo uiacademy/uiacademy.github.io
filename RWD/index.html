@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Responsive web design</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../revealjs/css/reveal.min.css">
+		<link rel="stylesheet" href="../revealjs/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../revealjs/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../revealjs/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../revealjs/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+        <div class="overlay" >
+            <div class="overlay-icon"></div>
+            <div class="overlay-line"></div>
+        </div>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Responsive Web Design</h1>
+					<h3>Prisitaikančios svetainės</h3>
+					<p>
+						<small>Darius Ašeriškis</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Šiandien</h2>
+
+					<ul>
+						<li>RWD pažintis</li>
+						<li>Tipai</li>
+						<li>Problemos ir jų sprendimai</li>
+						<li>Strategijos</li>
+					</ul>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Prisitaikančios svetainės</h2>
+					</section>
+					<section>
+						<h2>Kam to reikia?</h2>
+						<img src="img/bvsu.png" alt="Business vs Users">
+					</section>	
+					<section>
+						<h3>Vartotojai</h3>
+						<ul>
+							<li>Internetas visur</li>
+							<li>Įrenginai</li>
+							<li>Vatotojų poreikiai</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Verslas</h3>
+						<ul>
+							<li>Tikslas: geriausias įmanomas UX viesiems</li>
+							<li>Viena svetainė - mažesni kaštai</li>
+							<li>SEO</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Technologinis šuolis (2012 birželis) </h2>
+					<pre><code data-trim contenteditable style="line-height:40px;font-size: 36px; margin-top: 20px;">
+
+@media screen and (min-width: 1200px) {
+    // CSS
+}
+					</code></pre>
+					</section>
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2>Tipai</h2>
+					</section>
+					<section>
+						<h2>Tipai</h2>
+						<p>
+							<iframe width="560" height="315" src="http://www.youtube.com/embed/alp9UI0SeIY" frameborder="0" allowfullscreen></iframe>
+						</p>
+					</section>
+					<section>
+						<h2>Fixed</h2>
+						<p>Keičiant naršyklės dydį svetainė išlieka tokia pati</p>
+					</section>
+					<section>
+						<h2>Fluid</h2>
+						<p>Keičiant naršyklės dydį svetainė svetainės komponentų plotis keičiasi</p>
+					</section>
+					<section>
+						<h2>Adaptive</h2>
+						<p>Svetainė padalinta į vizualines grupes numatytiems įrenginiams ar jų grupėms</p>
+					</section>
+					<section>
+						<h2>Responsive</h2>
+						<p>Apjungia fluid ir adaptive technologijas</p>
+					</section>
+					<section>
+						<h2>
+							Demonstracija ir užduotis
+						</h2>
+						<p><a href="http://www.liquidapsive.com/" target="_blank">Pavyzdinė svetainė</a></p>
+						<p>
+							Pritaikyte svetainę pasirinktam įrenginiui:
+						<a href="http://www.liquidapsive.com/" target="_blank">Pavyzdinė svetainė</a>
+						</p>
+
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h2>Problemos ir Jų sprendimai</h2>
+                        <ul>
+                            <li>Paveikslėliai</li>
+                            <li>Features ir Javascript</li>
+                            <li>Išdestymo problemos</li>
+                        </ul>
+					</section>
+					<section>
+						<h2>Paveikslėliai</h2>
+						<ul>
+                            <li>
+                                Reikalvimai:
+                                <ul>
+                                    <li>
+                                        Art Direction 
+                                    </li>
+                                    <li>
+                                        Optimalus dydis kiekvienai situacijai
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                W3C
+                                <ul>
+                                    <li>&lt;picture&gt;</li>
+                                    <li>&lt;img src="..." srcset="..." /&gt;</li>
+                                </ul>
+                            </li>
+                        </ul>
+					</section>
+					<section>
+						<h2>PICTURE elementas</h2>
+						
+                        <pre><code data-trim contenteditable>
+
+&lt;picture&gt;
+  &lt;source media=&quot;(min-width: 40em)&quot;
+    srcset=&quot;big.jpg 1x, big-hd.jpg 2x&quot;&gt;
+  &lt;source 
+    srcset=&quot;small.jpg 1x, small-hd.jpg 2x&quot;&gt;
+  &lt;img src=&quot;fallback.jpg&quot; alt=&quot;&quot;&gt;
+&lt;/picture&gt;
+					</code></pre>
+					</section>
+                    
+                    <section>
+						<h2>srcset atributas</h2>
+						
+                        <pre><code data-trim contenteditable>
+&lt;img src="small.jpg"
+     srcset="large.jpg 1024w, medium.jpg 640w, small.jpg 320w"
+     sizes="(min-width: 36em) 33.3vw, 100vw"
+     alt="A rad wolf"&gt;
+
+					</code></pre>
+					</section>
+                    
+					<section>
+						<h2>Daugiau apie prisitaikančius paveikslėlius</h2>
+						<p>That's it, time to go back up.</p>
+						<a href="http://responsiveimages.org/" class="image">
+							responsiveimages.org
+						</a>
+					</section>
+                
+                    
+                    <section>
+						<h2>Javascript ir features</h2>
+					</section>
+                    
+                    <section>
+						<h3>Features</h3>
+						<ul>
+                            <li>Specializuoti poreikiai</li>
+                            <li>Neviskas svetaineja reikalinga visų įrengių vartotojams</li>
+                            <li>Įrenginio apribojimai ir galimybės</li>
+                        </ul>
+					</section>  
+                     <section>
+						<h3>Javascript</h3>
+						<ul>
+                            <li>Kuo portable įrenginys tuo mažiau JS</li>
+                            <li>Lėtesnis vykdymas</li>
+                            <li>Duomeny kiekio limitai</li>
+                            <li>Įrenginio specifika</li>
+                        </ul>
+					</section>  
+                    
+                    <section>
+						<h3>Sprendimai</h3>
+						<ul>
+                            <li>Nekrauti to kas nėra būtina</li>
+                            <li>Dinaminis užkrovimas</li>
+                            <li>Prefeching</li>          
+                        </ul>
+					</section>  
+                    
+                     <section>
+						<h2>Išdėstymas</h2>
+						<ul>
+                            <li>Turi prisitaikyti</li>
+                            <li>Išnaudoti turimą ekrano vietą optimaliai</li>
+                            <li>Vizualiniai sprendimai</li>
+                            <li>...</li>
+                        </ul>
+					</section>
+                    
+                    
+                    
+                    <section>
+						<h2>Pavyzdžiui. Proporcingas paveisklėlis</h2>
+						<p>
+                            Turime paveiklėlį, kuris išpildo visą erdvę. 
+                        </p>
+					</section>
+                    
+                    <section>
+						<h2>Pavyzdžiui. Sąrašas</h2>
+						<p>
+                            Turime el. dienoraščio įrašus, kuriuos reikia išdėstyti - platūs, du trumpi paveikslėliai.
+                        </p>
+					</section>
+                    
+                    <section>
+						<h2>Sprendimas A</h2>
+						<p>
+                            Paremtas proporcingais paveikslėliais
+                        </p>
+					</section>
+                    
+                    <section>
+						<h2>Sprendimas B</h2>
+						<p>
+                            Parentas eilutės elementais.
+                        </p>
+					</section>
+                    
+
+                    
+                    <section>
+						<h2>Užduotys</h2>
+                        <ul>
+                            <li>
+                                Paveisklėlių pritaikymas
+                            </li>
+                            
+                            <li >
+                                Vykdymas esant poreikiui 
+                            </li>
+                            
+                            <li >
+                                Prisitaikantis productų sąrašas
+                            </li>
+                        </ul>
+					</section>
+                    
+				</section>
+
+				<section>
+                    <section>
+						<h2>Strategijos</h2>
+					</section>
+                    <section>
+						<h2>Top down (Desktop first)</h2>
+                        <ol>
+                            <li>
+                                Pradedam kai svetainė yra didžiausioja busenoje (pvz. desktop 1440px)
+                            </li>
+                            
+                            <li >
+                                Mažinam langą tol kol svetainė bebetelpa į langą
+                            </li>
+                            
+                            <li >
+                                Aliekam  reikalingus vizualinius pakeitimus
+                            </li>
+                            <li>
+                                Jei nepasiekėm mažiausios rezoliucijom, grįžtam į <span style="color:red;">#2</span> žingsnį.
+                            </li>
+                        </ol>
+					</section>
+                    <section>
+						<h2>Bottom up (Mobile first)</h2>
+                        <ol>
+                            <li>
+                                Pradedam kai svetainė yra mažiausioje busenoje  <br> (pvz. iphone 5 320px)
+                            </li>
+                            
+                            <li >
+                                Didinam langą tol kol svetainė atrodo netinkamai
+                            </li>
+                            
+                            <li >
+                                Aliekam  reikalingus vizualinius pakeitimus
+                            </li>
+                            <li>
+                                Jei nepasiekėm didžiausios rezoliucijos, grįžtam į <span style="color:red;">#2</span> žingsnį.
+                            </li>
+                        </ol>
+					</section>
+                    <section>
+						<h2>Strategijos</h2>
+                        <ul>
+                            <li>
+                                Svetainės pritaikymas
+                            </li>
+                            
+                            <li >
+                                Mobilios svetainės
+                            </li>
+                            
+                            <li >
+                                Svetainės pritaikymas pažingsniui
+                            </li>
+                        </ul>
+					</section>
+                    
+                    <section>
+						<h2>Užduotys</h2>
+                        <ul>
+                            <li>
+                                Pavyzdinės svetainės pritaikymas top down strategija
+                            </li>
+                            
+                            <li >
+                                Mobilios svetainės pritaikymas bottom up strategija
+                            </li>
+                        </ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Trumpai</h2>
+                    <ul>
+                        <li>
+                            Svarbiausia - geriausias vartotojo UX nesvarbu kokiu įrenginiu jis aplankė svetainę.
+                        </li>
+                        <li>
+                            Sužinomjom apie prisitaikančių svetainių tipus.
+                        </li>
+                        <li >
+                            Aptarėme ir pritaikėme pagrindines technikas ir strategijas prisitaikančiom svetainėm
+                        </li>
+                    </ul>
+				</section>
+                
+                
+                <section>
+					<h2>Ačiū</h2>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../revealjs/lib/js/head.min.js"></script>
+		<script src="../revealjs/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

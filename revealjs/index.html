@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Geriausios praktikos ir bibliotekos</title>
+
+		<meta name="description" content="Geriausios šiandienos praktikos">
+		<meta name="author" content="Darius Ašeriškis">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+        <div style="background-color:#fff; height:80%; width:80%; top:10%; left:10%; position:absolute; opacity:.95;">
+            <div style="position: absolute; right:5%; top:5%; background-image:url(../logo.gif); width:125px; height: 36px "></div>
+            <div style="height:100%; width:10px; background-color:orange;"></div>
+            
+        </div>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Geriausios praktikos</h1>
+					<h3>CS ir JS įrankiai</h3>
+					<p>
+						Darius Ašeriškis
+					</p>
+				</section>
+
+				<section>
+					<h2>Šiandien</h2>
+					<ul>
+                        <li>CSS filosofijos</li>
+                        <li>CSS technikos</li>
+                        <li>JS bibiliotekos</li>
+                        <li>Pilni UI sprendimai</li>
+                        <li>HTML generavimo bibliotekos</li>
+                    </ul>
+				</section>
+                
+                <section>
+                    <section>
+                        <h2>CSS filosofijos</h2>
+                    </section>
+                    <section>
+                        <h2>CSS problema</h2>
+                        <ul>
+                            <li>Nelaikoma programavimu</li>
+                            <li>Nėra griežta kalba</li>
+                            <li>Lengva surišti HTML ir CSS</li>
+                            <li>Specifiškumo karai</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Tik klasės</h2>
+                        <ul>
+                            <li>
+                                Pliusai
+                                <ul>
+                                    <li>
+                                        Vienodas CSS specifiškumo lygmuo
+                                    </li>
+                                    <li>
+                                        Lengvesnis palaikymas
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                Minusai
+                                <ul>
+                                    <li>
+                                        Prarastas semantinis apipavidalinimas
+                                    </li>
+                                    <li>
+                                        Prarandamas vienetinis stilius
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>OOCSS (1)</h2>
+                        <p>
+                            Į CSS žiūrima kaip į lego detales iš kurių sudaroma svetainė
+                        </p>
+                    </section>
+                    <section>
+                        <h2>OOCSS (2)</h2>
+                        <ul>
+                            <li>
+                                Pliusai
+                                <ul>
+                                    <li>
+                                        Atskirtos pagalbinės klasės
+                                    </li>
+                                    <li>
+                                        Aukštas stilių pakartotinis panaudojimas
+                                    </li>
+                                    <li>
+                                        Galima išmokti klases
+                                    </li>
+                                    <li>
+                                        Mažas skaičius specializuotų klasių
+                                    </li>
+                                    <li>
+                                        Mažas failo dydis
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                Minusai
+                                <ul>
+                                    <li>
+                                        Daug klasių ant vieno elemento
+                                    </li>
+                                    <li>
+                                        Reikia papildomų klasių reikia speciazuotam apipavidalinimui
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Užduotis 1. Greita pažintis su OOCSS</h2>
+                    </section>
+                    <section>
+                        <h2>SMACSS</h2>
+                        <p>
+                            Apibrėžta organizacinė sistema ir pagrindiniai aspektai ir geriausios praktikos.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>BEM CSS</h2>
+                        <p>
+                            Konkretus OOCSS įgyvendinimas
+                        </p>
+                    </section>
+                   
+                    <section>
+                        <h2>ACSS (1)</h2>
+                        <p>
+                            Svetainė sudaryta iš atomų, kurie sudaro molekulias, kurios sudaro organizmus, kurie sudaro šablonus, kurie sudaro puslapius.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>ACSS (2)</h2>
+                        <ul>
+                            <li>
+                                Pliusai
+                                <ul>
+                                    <li>
+                                        Aiški chierarchine struktūra
+                                    </li>
+                                    <li>
+                                        Puikiai tinka kuriant productų linijas
+                                    </li>
+                                    <li>
+                                        Skatina dokumentaciją
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                Minusai
+                                <ul>
+                                    <li>
+                                        Sudėtingi baziniai pokyčiai
+                                    </li>
+                                    <li>
+                                        Sudėtingai sudaromas galutinis rezultatas
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Užduotis 2. Gyva dokumentacija</h2>
+                    </section>
+                </section>
+                
+                <section>
+					<section>
+						<h2>CSS Technikos</h2>
+					</section>
+					<section>
+						<h2>CSS Gridai (1)</h2>
+                        <p>
+                            CSS klasių rinkinys skirtas dalinti turinį į stulpelius
+                        </p>
+                        <p>
+                            Dažniausiai sudarytas iš eilutės klasės, bendros stulpelių klasės ir sulpelių dydžių klasių.
+                        </p>
+					</section>
+					<section>
+						<h2>CSS Gridai (2)</h2>
+
+					</section>
+					<section>
+						<h2>Media elementas (1)</h2>
+                        <p>Sudarytas iš paveikslėlio ir teksto bloko šalia</p>
+					</section>
+					<section>
+						<h2>Media elementas (2)</h2>
+
+					</section>
+                    
+					<section>
+						<h2>Užduotis 1. Suformuoti svetainės išdėstymą</h2>
+					</section>
+				</section>
+                
+                <section>
+					<section>
+						<h2>JS bibliotekos</h2>
+					</section>
+					<section>
+						<h2>Bibliotekos</h2>
+                        <ul>
+                            <li>
+                                Vanila
+                            </li>
+                            <li>
+                                JQuery, Zepto, ...
+                            </li>
+                            <li>
+                                Backbonejs, Angularjs, ...
+                            </li>
+                            <li>
+                                Modernizrjs, ...
+                            </li>
+                            <li>...</li>
+                        </ul>
+					</section>
+                    <section>
+						<h2>Užduotis 1. Vanila</h2>
+					</section>
+				</section>
+                
+                <section>
+					<section>
+						<h2>Pilni UI strendimai</h2>
+					</section>
+                    <section>
+						<h2>HTML5 boilerplate</h2>
+                        <ul>
+                            <li>
+                                Didelis kapitalas būtinų žinių, besikartojančių visuose projektuose
+                            </li>
+                            <li>
+                                Pradinis švarus puslapis
+                            </li>
+                        </ul>
+					</section>
+					<section>
+						<h2>Bootstrap</h2>
+                        <ul>
+                            <li>HTML5 boilerplate+</li>
+                            <li>Responsive design</li>
+                            <li>Komponentai</li>
+                            <li>Gridas</li>
+                            <li>Išdėstymas</li>
+                            <li>JS komponetai</li>
+                            <li>...</li>
+                        </ul>
+					</section>
+
+					<section>
+						<h2>Kiti</h2>
+                        <ul>
+                            <li>Foundation</li>
+                            <li>ZIMIT</li>
+                            <li>INK</li>
+                            <li>...</li>
+                        </ul>
+					</section>
+                    <section>
+                        <h2>Užduotis 1. Sukurti svetainę su Bootstrap</h2>
+                    </section>
+
+				</section>
+                
+                
+                <section>
+					<section>
+						<h2>UI generavimas</h2>
+					</section>
+					<section>
+						<h2>Bibliotekos</h2>
+                        <ul>
+                            <li>doT.js</li>
+                            <li>underscore.js</li>
+                            <li>hogan</li>
+                            <li>handlebars</li>
+                            <li>mustache</li>
+                            <li>...</li>
+                        </ul>
+					</section>
+					<section>
+						<h2>doT.js pavyzdys</h2>
+					</section>
+					<section>
+						<h2>Užduotis 1. Sąrašo generavimas</h2>
+					</section>
+      				</section>
+                <section>
+					<section>
+						<h2>Trumpai</h2>
+                        <ul>
+                            <li>Grįžti į primą skaidrę ;)</li>
+                        </ul>
+                        
+					</section>
+                </section>
+                <section>
+					<section>
+						<h2>Ačiū</h2>
+					</section>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
