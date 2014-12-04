@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <style type="text/css">
+            * {
+                box-sizing: border-box;   
+            }
+            html,  body {
+                padding:0;
+                margin: 0;
+            }
+            #code {
+                height:100%;
+                width:100%;
+            }
+            #testRunner {
+                height:50%;
+                width:100%;
+            }
+            
+            #source {
+                 height:50%;
+                width:100%;
+            }
+            
+            .row:after {
+                clear: both;
+            }
+            
+            .cell {
+                float: left;
+            }
+            
+            .size1of2 {
+                width:50%;   
+            }
+        </style>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    </head>
+    <body>
+        
+        <div class="row">
+            <div class="cell size1of2">
+                        <div id="code">
+describe("A suite", function() {
+   it("contains spec with an expectation", function() {
+      expect(true).toBe(true);
+   });
+});</div>
+            </div>
+            <div class="cell size1of2">
+                <div>
+                    <div id="source"></div>
+                </div>
+                <div>
+                    <iframe id="testRunner" src="../../shared/jasmine/SpecRunner.html"></iframe>
+                </div>
+            </div>
+        </div>
+        
+        
+
+            
+        
+        
+        <script src="../../shared/ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+
+        
+        <script type=text/javascript>
+        
+            var editor = ace.edit("code");
+            editor.setTheme("ace/theme/monokai");
+            editor.getSession().setMode("ace/mode/javascript");
+        
+            var runner = $("#testRunner");
+            var code = $('#code');
+            
+            editor.getSession().on('change', function(e) {
+                runner.attr('src', "../../shared/jasmine/SpecRunner.html?code="+encodeURIComponent(editor2.getValue())+"&js=" + encodeURIComponent(editor.getValue()));
+            });
+            
+            
+            var editor2 = ace.edit("source");
+            editor2.setTheme("ace/theme/monokai");
+            editor2.getSession().setMode("ace/mode/javascript");
+            editor2.setReadOnly(true);
+            
+            $.get('source.js', function(data){
+                editor2.setValue(data);
+            });
+            
+
+        </script>
+            
+    </body>
+</html>
