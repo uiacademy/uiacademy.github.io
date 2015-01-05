@@ -67,7 +67,7 @@ background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-  color: #13daec;
+  color: #F79809;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -76,7 +76,7 @@ background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
   transition: color .15s ease; }
 
 .reveal a:not(.image):hover {
-  color: #71e9f4;
+  color: #F79809;
   text-shadow: none;
   border: none; }
 

@@ -82,7 +82,10 @@ describe("A suite", function() {
             var editor2 = ace.edit("source");
             editor2.setTheme("ace/theme/monokai");
             editor2.getSession().setMode("ace/mode/javascript");
-            editor2.setReadOnly(true);
+            
+            editor2.getSession().on('change', function(e) {
+                runner.attr('src', "../../shared/jasmine/SpecRunner.html?code="+encodeURIComponent(editor2.getValue())+"&js=" + encodeURIComponent(editor.getValue()));
+            });
             
             $.get('source.js', function(data){
                 editor2.setValue(data);

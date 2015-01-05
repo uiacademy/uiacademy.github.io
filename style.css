@@ -124,6 +124,72 @@ a, a:hover, a:focus {
     background-repeat: no-repeat;
 }
 
+.row:after, .row:before, .clearfix:before, .clearfix:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+
+.row.spacing .cell {
+    padding: 10px 5px 0 5px;
+}
+
+.row.spacing .cell:last-child {
+    padding-right: 0;
+}
+
+.cell {
+    float: left;
+}
+.rcell {
+    float: right;
+}
+.size1of10 {
+    width: 10%;
+}
+
+.size1of9 {
+    width: 11.1111%;
+}
+.size1of8 {
+    width: 12.5%;
+}
+.size1of7 {
+    width: 14.2857%;
+}
+.size1of6 {
+    width: 16.6666%;
+}
+.size1of5 {
+    width: 20%;
+}
+
+.size1of4 {
+    width: 25%;
+}
+
+.size1of3 {
+    width: 33.3333%;
+}
+
+.size2of3{
+    width: 66.6666%;
+}
+
+.size3of4 {
+    width: 75%;
+}
+
+.size1of2 {
+    width: 50%;
+}
+
+.size1of1 {
+    width: 100%;
+}
+
 
 
 
