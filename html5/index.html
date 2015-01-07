@@ -143,7 +143,7 @@ textarea.value = window.<b>localStorage</b>.<b>getItem</b>('value');
                     <textarea id="ta" placeholder="Type your text here..." class="form-control"></textarea>
                 </p>
                 <p>
-                    <button id="save-ta">Save</button>
+                    <button id="save-ta" class="btn btn-default">Save</button>
                 </p>
                 <p id="ta-log"></p>
                 <script defer>
@@ -201,9 +201,9 @@ db.<b>transaction</b>(function(tx) {
                         <input type="text" id="todoitem" class="form-control"/>
                     </p>
                     <p>
-                        <button onclick="webSqlSample.newRecord()">new to do item</button>
-                        <button onclick="webSqlSample.createTable()">create table</button>
-                        <button onclick="webSqlSample.dropTable()">drop table</button>
+                        <button onclick="webSqlSample.newRecord()" class="btn btn-default">new to do item</button>
+                        <button onclick="webSqlSample.createTable()" class="btn btn-default">create table</button>
+                        <button onclick="webSqlSample.dropTable()" class="btn btn-default">drop table</button>
                     </p>
                     <p>See the generated database: Developer > Developer Tools > Storage</p>
                     <ul class="record-list" id="db-results"></ul>
