@@ -23,6 +23,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>HTML5 Presentation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -52,9 +53,31 @@
     <script src="../revealjs/lib/js/html5shiv.js"></script>
     <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
     <style>
         .reveal h1 {
             font-size: 2em;
+        }
+        .reveal pre {
+            line-height: normal;
+        }
+        .reveal section img {
+            padding: 0;
+            margin: 0;
+            line-height: normal;
+            background: none;
+            box-shadow: none;
+            max-width: 100%;
+            max-height: 100%;
+            border: none;
+        }
+        .reveal label {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        input[type=checkbox] {
+            height:1em;
+            width:1em;
         }
     </style>
 </head>
@@ -116,8 +139,12 @@ saveButton.addEventListener('click', function () {
 textarea.value = window.<b>localStorage</b>.<b>getItem</b>('value');
 </pre>
                 <p id="localstorage-message">Save text value on the client side (crash-safe)</p>
-                <textarea id="ta" placeholder="Type your text here..."></textarea>
-                <button id="save-ta">Save</button>
+                <p>
+                    <textarea id="ta" placeholder="Type your text here..." class="form-control"></textarea>
+                </p>
+                <p>
+                    <button id="save-ta">Save</button>
+                </p>
                 <p id="ta-log"></p>
                 <script defer>
                     (function () {
@@ -170,10 +197,14 @@ db.<b>transaction</b>(function(tx) {
 </pre>
 
                 <div class="center" id="websqldb-example">
-                    <input type="text" id="todoitem"/>
-                    <button onclick="webSqlSample.newRecord()">new to do item</button>
-                    <button onclick="webSqlSample.createTable()">create table</button>
-                    <button onclick="webSqlSample.dropTable()">drop table</button>
+                    <p>
+                        <input type="text" id="todoitem" class="form-control"/>
+                    </p>
+                    <p>
+                        <button onclick="webSqlSample.newRecord()">new to do item</button>
+                        <button onclick="webSqlSample.createTable()">create table</button>
+                        <button onclick="webSqlSample.dropTable()">drop table</button>
+                    </p>
                     <p>See the generated database: Developer > Developer Tools > Storage</p>
                     <ul class="record-list" id="db-results"></ul>
                     <div id="db-log"></div>
@@ -280,10 +311,16 @@ idbRequest.onsuccess = function(event) {
 };
 </pre>
                 <div class="center" id="indexeddb-example">
-                    <input type="text" placeholder="key" id="idb-key" size="10"/> <input type="text" placeholder="value"
-                                                                                         id="idb-value" size="15"/>
-                    <button onclick="indexedDbSample.idbSet()">set</button>
-                    <button onclick="indexedDbSample.idbRemove()">remove objectStore</button>
+                    <p>
+                        <input type="text" placeholder="key" id="idb-key" size="10" class="form-control"/>
+                    </p>
+                    <p>
+                        <input type="text" placeholder="value" id="idb-value" size="15" class="form-control"/>
+                    </p>
+                    <p>
+                        <button onclick="indexedDbSample.idbSet()" class="btn btn-default">set</button>
+                        <button onclick="indexedDbSample.idbRemove()" class="btn btn-default">remove objectStore</button>
+                    </p>
                     <div id="idb-log"></div>
                     <div class="record-list" id="idb-results-wrapper"></div>
                 </div>
@@ -475,7 +512,6 @@ idbRequest.onsuccess = function(event) {
                             if (!db) {
                                 return;
                             }
-                            debugger;
                             try {
                                 window.indexedDB.deleteDatabase(DB_NAME);
                                 idResultsWrapper_.innerHTML = '';
@@ -497,8 +533,9 @@ idbRequest.onsuccess = function(event) {
             </section>
             <section>
                 <h1>Application Cache</h1>
-
-                <pre>&lt;html <b>manifest="cache.appcache"</b>&gt;</pre>
+                <div class="row">
+                    <div class="col-md-6">
+                        <pre>&lt;html <b>manifest="cache.appcache"</b>&gt;</pre>
 
 <pre>
 window.<b>applicationCache</b>.addEventListener('updateready', function(e) {
@@ -510,7 +547,9 @@ window.<b>applicationCache</b>.addEventListener('updateready', function(e) {
   }
 }, false);
 </pre>
-                cache.appcache:
+                    </div>
+                    <div class="col-md-6">
+                        <p>cache.appcache:</p>
 <pre>CACHE MANIFEST
 # version 1.0.0
 CACHE:
@@ -521,18 +560,34 @@ CACHE:
 NETWORK:
 *
 </pre>
+                    </div>
+                </div>
 
                 <p id="appcache-message">Turn off your internet connection and refresh this page!
                     <img src="src/refresh.png" onclick="window.location.reload();"/></p>
             </section>
-            <section id="quota-api">
+            <section>
                 <h1>Quota API</h1>
+<pre>
+// Request Status
+<b>webkitStorageInfo</b>.<b>queryUsageAndQuota</b>(webkitStorageInfo.TEMPORARY, function(used, remaining) {
+    console.log("Used quota: " + used + ", remaining quota: " + remaining);
+  }
+);
+
+// Request Quota (only for File System API)
+<b>webkitStorageInfo</b>.<b>requestQuota</b>(webkitStorageInfo.PERSISTENT, 10 * 1024 * 1024, function(used) {
+    console.log("Used quota: " + used + ", remaining quota: " + remaining);
+  }
+);</pre>
+            </section>
+            <section id="quota-api">
                 <style>
                     #quota-api table {
                         width: 100%;
                         border-collapse: collapse;
                         margin-top: 20px;
-                        font-size: 0.4em;
+                        font-size: 0.8em;
                         padding: 0;
                     }
 
@@ -564,18 +619,7 @@ NETWORK:
                         display: block;
                     }
                 </style>
-<pre>
-// Request Status
-<b>webkitStorageInfo</b>.<b>queryUsageAndQuota</b>(webkitStorageInfo.TEMPORARY, function(used, remaining) {
-    console.log("Used quota: " + used + ", remaining quota: " + remaining);
-  }
-);
-
-// Request Quota (only for File System API)
-<b>webkitStorageInfo</b>.<b>requestQuota</b>(webkitStorageInfo.PERSISTENT, 10 * 1024 * 1024, function(used) {
-    console.log("Used quota: " + used + ", remaining quota: " + remaining);
-  }
-);</pre>
+                <h1>Quota API sample</h1>
                 <table border="0" cellspacing="5" cellpadding="5">
                     <tr>
                         <th></th>
@@ -591,7 +635,7 @@ NETWORK:
                         <td>App Cache</td>
                         <td rowspan="4">10% of available disk in total
                             <div class="quota-info-bubble">
-                                <button id="temp-query">Show Usage</button>
+                                <button id="temp-query" class="btn btn-default">Show Usage</button>
                                 <span>Used: <output>--</output> Bytes</span><span>Remaining: <output>--
                             </output> Bytes</span></div>
                         </td>
@@ -605,9 +649,9 @@ NETWORK:
                     <tr>
                         <td>File System API</td>
                         <td>Arbitrary
-                            <div class="quota-info-bubble"><input id="requested-quota" type="text"
-                                                                  placeholder="Request quota amount..."/> in Bytes
-                                <button id="perm-request" style="margin-left: 5px">Request Quota</button>
+                            <div class="quota-info-bubble">
+                                <input id="requested-quota" type="text" placeholder="Request quota amount..." class="form-control"/> in Bytes
+                                <button id="perm-request" style="margin-left: 5px" class="btn btn-default">Request Quota</button>
                                 <span>Used: <output>--</output> Bytes</span></div>
                         </td>
                     </tr>
@@ -654,23 +698,6 @@ NETWORK:
                      title="HTML5 Realtime &amp; Communication" alt="HTML5 Realtime &amp; Communication">
             </section>
             <section>
-                <style>
-                    #wmap {
-                        width: 100%;
-                        height: 200px;
-                        line-height: normal;
-                    }
-
-                    #wmap img {
-                        padding: 0;
-                        margin: 0;
-                        line-height: normal;
-                        background: none;
-                        box-shadow: none;
-                        max-width: 100%;
-                        max-height: 100%;
-                    }
-                </style>
                 <h1>Web Workers</h1>
                 main.js:
 <pre>
@@ -685,13 +712,24 @@ self.<b>onmessage</b> = function(event) {
   self.<b>postMessage</b>("recv'd: " + event.data);
 };
 </pre>
+            </section>
+            <section>
+                <style>
+                    #wmap {
+                        width: 100%;
+                        height: 300px;
+                        line-height: normal;
+                        margin-bottom: 40px;
+                    }
+                </style>
+                <h1>Web Workers sample</h1>
                 <div id="w-wrapper">
                     <div id="wmap" class="gmap example">
-                        <img src="http://maps.google.com/maps/api/staticmap?center=13,13&zoom=3&size=680x200&sensor=false"/>
+                        <img src="http://maps.google.com/maps/api/staticmap?center=13,13&zoom=3&size=900x400&sensor=false"/>
                     </div>
                     <div style="margin-top:5px">
-                        <button id="find-route-y">Find route with Workers</button>
-                        <button id="find-route-n">Find route without Workers</button>
+                        <button id="find-route-y" class="btn btn-default">Find route with Workers</button>
+                        <button id="find-route-n" class="btn btn-default">Find route without Workers</button>
                         <p id="w-loading">Loading Route...</p>
                     </div>
                 </div>
@@ -834,34 +872,6 @@ self.<b>onmessage</b> = function(event) {
                 </script>
             </section>
             <section>
-                <style>
-                    #ws-left, #ws-right {
-                        padding: 0;
-                        margin: 0;
-                        float: left;
-                        width: 50%;
-                        font-size: .6em;
-                        line-height: normal;
-                        text-align: left;
-                    }
-
-                    #ws-right {
-                        float: right;
-                    }
-
-                    #ws-left h4, #ws-right h4 {
-                        padding: 0;
-                        margin: 0;
-                    }
-
-                    #ws-config-location {
-                        padding: 0px 0px 15px;
-                    }
-
-                    #ws-left img, #ws-right img {
-                        margin: 0px;
-                    }
-                </style>
                 <h1>WebSocket</h1>
 <pre>var socket = new <b>WebSocket</b>('ws://html5rocks.websocket.org/echo');
 socket.<b>onopen</b> = function(event) {
@@ -875,30 +885,50 @@ socket.<b>onclose</b> = function(event) { alert('closed'); }
                     Both the server and client can send data at any time, or even at the same time.
                     Only the data itself is sent, without the overhead of HTTP headers, dramatically
                     reducing bandwidth.</p>
+            </section>
+            <section>
+                <style>
+                    #ws-log img {
+                        width: 1em;
+                        height: 1em;
+                        margin: 0;
+                        border: none;
+                        box-shadow: none;
+                    }
+                    #wsConsoleLog {
+                        font-size: 0.7em;
+                        text-align: left;
+                    }
+                    .align-left {
+                        text-align: left;
+                    }
+                </style>
+                <h1>WebSocket sample</h1>
+                <div class="row align-left">
+                    <div class="col-md-5">
+                        <p>
+                            <input type="text" id="wsUri" disabled class="form-control"/>
+                        </p>
+                        <label id="wsSecureCbLabel"><input type="checkbox" id="wsSecureCb" onclick="wsToggleTls();" disabled/> Use secure WebSocket (TLS/SSL)</label>
 
-                <div id="ws-left">
-                    <div id="ws-config-location">
-                        <h4>Location:</h4>
-                        <input type="text" id="wsUri" disabled/>
-                        <br>
-                        <input type="checkbox" id="wsSecureCb" onclick="wsToggleTls();" disabled/>
-                        <label id="wsSecureCbLabel" for="wsSecureCb">Use secure WebSocket (TLS/SSL)</label>
-                        <br>
-                        <button id="wsConnectBut" disabled>Connect</button>
-                        <button id="wsDisconnectBut" disabled>Disconnect</button>
-                    </div>
-                    <div id="ws-config-message">
-                        <h4>Message:</h4>
-                        <input type="text" id="wsMessage" value="Hello, WebSocket" disabled/>
-                        <button id="wsSendBut" disabled>Send</button>
-                    </div>
-                </div>
-                <div id="ws-right">
-                    <div id="ws-log">
-                        <strong>Output:</strong>
+                        <p>
+                            <button id="wsConnectBut" disabled class="btn btn-default" >Connect</button>
+                            <button id="wsDisconnectBut" disabled class="btn btn-default">Disconnect</button>
+                        </p>
 
-                        <div id="wsConsoleLog"></div>
-                        <button id="wsClearLogBut">Clear log</button>
+
+                        <p>Message:</p>
+                        <p><input type="text" id="wsMessage" value="Hello, WebSocket" disabled class="form-control"/></p>
+                        <p><button id="wsSendBut" disabled class="btn btn-default">Send</button></p>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-6">
+                        <div id="ws-log">
+                            <strong>Output:</strong>
+
+                            <div id="wsConsoleLog"></div>
+                            <button id="wsClearLogBut" class="btn btn-default">Clear log</button>
+                        </div>
                     </div>
                 </div>
                 <script src="src/websocket/websocket.js" defer></script>
@@ -915,8 +945,10 @@ socket.<b>onclose</b> = function(event) { alert('closed'); }
   }
   </pre>
                 <div id="notifications-message">
-                    <input type="text" id="notification-message" placeholder="Message"/>
-                    <button id="show-message">Show notifications</button>
+                    <p>
+                        <input type="text" id="notification-message" placeholder="Message" class="form-control"/>
+                        <button id="show-message" class="btn btn-default">Show notifications</button>
+                    </p>
                     <div id="notification-log"></div>
                 </div>
 
@@ -1249,20 +1281,6 @@ for (var i = 0, file; file = files[i]; ++i) {
                     Chrome 9+ )</p>
             </section>
             <section>
-                <style>
-                    #geo-map {
-                        height: 280px;
-                        width: 100%;
-                    }
-
-                    #geo-map img {
-                        max-width: 100%;
-                        max-height: 100%;
-                        border: none;
-                        background: none;
-                        box-shadow: none;
-                    }
-                </style>
                 <h1>Geolocation</h1>
 <pre>if (<b>navigator</b>.<b>geolocation</b>) {
   <b>navigator</b>.<b>geolocation</b>.<b>getCurrentPosition</b>(function(position) {
@@ -1273,12 +1291,25 @@ for (var i = 0, file; file = files[i]; ++i) {
   }, errorHandler);
 }
 </pre>
-                <button id="see-position">Show Position</button>
-                <span id="geo-log"></span>
+            </section>
+            <section>
+                <style>
+                    #geo-map {
+                        height: 280px;
+                        width: 100%;
+                    }
+                </style>
+                <h1>Geolocation sample</h1>
 
                 <div id="geo-map" class="gmap example">
                     <img src="http://maps.google.com/maps/api/staticmap?center=37.4419,-94.1419&zoom=3&size=680x278&sensor=true"/>
                 </div>
+                <p>
+                    <button id="see-position" class="btn btn-default">Show Position</button>
+                </p>
+                <p>
+                    <span id="geo-log"></span>
+                </p>
 
                 <script defer>
                     (function () {
@@ -1357,6 +1388,9 @@ for (var i = 0, file; file = files[i]; ++i) {
                             display: none;
                             text-align: center;
                         }
+                        #slide-orientation .right {
+                            float: right;
+                        }
                     </style>
                     <h1>Device Orientation</h1>
 <pre>
@@ -1368,7 +1402,20 @@ window.addEventListener('<em>deviceorientation</em>', function(event) {
 </pre>
                     <p>This sample requires FF3.6+ or Google Chrome
                         on a device with a built in accelerometer or iOS 4.2.</p>
-
+                    <table class="right">
+                        <tr>
+                            <td>Tilt Left/Right [gamma]</td>
+                            <td id="orientation-gamma"></td>
+                        </tr>
+                        <tr>
+                            <td>Tilt Front/Back [beta]</td>
+                            <td id="orientation-beta"></td>
+                        </tr>
+                        <tr>
+                            <td>Direction [alpha]</td>
+                            <td id="orientation-alpha"></td>
+                        </tr>
+                    </table>
                     <div class="flex hbox boxcenter">
                         <div id="orientationWrap" class="noflex vbox boxcenter">
                             <div class="layer"><img src="src/orientation/chrome-layer-01.png"/></div>
@@ -1378,6 +1425,11 @@ window.addEventListener('<em>deviceorientation</em>', function(event) {
                             <div class="layer"><img src="src/orientation/chrome-layer-05.png"/></div>
                         </div>
                     </div>
+                    <aside class="notes">
+                        check cache: chrome://appcache-internals/
+                        all links: chrome://chrome-urls/
+                    </aside>
+
                     <script defer>
                         function OrientationSlide(slide) {
                             this._slide = document.querySelector(slide);
@@ -1385,6 +1437,8 @@ window.addEventListener('<em>deviceorientation</em>', function(event) {
                             this._lastGamma = 0;
                         }
                         OrientationSlide.prototype.orientationListener = function (evt) {
+                            printOrientation(evt);
+
                             // For FF3.6+
                             if (!evt.gamma && !evt.beta) {
                                 evt.gamma = -(evt.x * (180 / Math.PI));
@@ -1412,6 +1466,12 @@ window.addEventListener('<em>deviceorientation</em>', function(event) {
                                 this._lastBeta = beta;
                             }
                         };
+
+                        function printOrientation(evt) {
+                            document.getElementById("orientation-gamma").innerHTML = Math.round(evt.gamma);
+                            document.getElementById("orientation-beta").innerHTML = Math.round(evt.beta);
+                            document.getElementById("orientation-alpha").innerHTML = Math.round(evt.alpha);
+                        }
                         OrientationSlide.prototype.onunload = function (evt) {
                             window.removeEventListener('deviceorientation', this.orientationListener, false);
                             window.removeEventListener('MozOrientation', this.orientationListener, false);
@@ -1433,34 +1493,14 @@ window.addEventListener('<em>deviceorientation</em>', function(event) {
             </section>
             <section>
                 <div class="slide device-access" id="speech-input">
-                    <style>
-                        #speech-input-field {
-                            width: 400px;
-                            height: 50px;
-                            padding: 10px 15px;
-                            font-size: 155%;
-                            border-radius: 10px;
-                            border: 1px solid #ccc;
-                            outline: 0;
-
-                            font-size: 16px;
-                            margin-right: 10px;
-                            font-family: Helvetica;
-                            padding: 3px 5px;
-                        }
-                    </style>
                     <h1>Speech Input</h1>
                     <pre>&lt;input type="text" <b>x-webkit-speech</b> /&gt;</pre>
 
-                    <div class="flex hbox boxcenter">
-                        <div class="noflex vbox boxcenter" style="height:300px;text-align:center">
-                            <input id="speech-input-field" type="text" x-webkit-speech/>
-
-                            <p style="display:none">Speech input is not enabled in your browser.<br>
-                                Try running Google Chrome with the <code>--enable-speech-input</code> flag. </p>
-
-                            <p><img src="src/speech_input.gif" alt=""/></p>
-                        </div>
+                    <input id="speech-input-field" type="text" x-webkit-speech class="form-control"/>
+                    <div>
+                        <p style="display:none">Speech input is not enabled in your browser.<br>
+                            Try running Google Chrome with the <code>--enable-speech-input</code> flag. </p>
+                        <p><img src="src/speech_input.gif" alt=""/></p>
                     </div>
                     <script>
                         if (!('webkitSpeech' in document.createElement('input'))) {
@@ -1570,6 +1610,9 @@ window.addEventListener('<em>deviceorientation</em>', function(event) {
     This slide deck teaches you everything you need to know about HTML 5.
 </details>
 </pre>
+            </section>
+            <section>
+                <h1>Markup for applications</h1>
 
 <pre>&lt;<b>meter</b> <b>min</b>="0" <b>max</b>="100" <b>low</b>="40" <b>high</b>="90" <b>optimum</b>="100" value="91"&gt;A+&lt;/<b>meter</b>&gt;
 Your score is: <meter value="91" min="0" max="100" low="40" high="90" optimum="100">A+</meter><br>
@@ -1638,13 +1681,11 @@ Goal is: <progress value="75" max="100">3/4 complete</progress>
             </section>
             <section id="form-types">
                 <style>
-                    [required] {
-                        border-color: #88a;
-                        -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5);
+                    #form-types input[required] {
+                        -webkit-box-shadow: 0 0 3px rgba(255, 0, 0, 1);
                     }
 
-                    :invalid {
-                        border-color: #e88;
+                    #form-types :invalid {
                         -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
                     }
 
@@ -1663,6 +1704,8 @@ Goal is: <progress value="75" max="100">3/4 complete</progress>
                         -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
                         box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
                         padding: 3px 5px;
+                        width: 150px;
+                        line-height: normal;
                     }
                 </style>
                 <h1>New form types</h1>
@@ -1768,34 +1811,38 @@ document.getElementById("audio").<b>muted</b> = false;
 &lt;<b>video</b> id="video" src="movie.webm" <b>autoplay</b> <b>controls</b>&gt;&lt;/video&gt;
 document.getElementById("video").<b>play</b>();
 </pre>
-                <input type="button" id="reflection-button" onclick="addReflection()"
-                       value="Add CSS reflection to video"/>
 
-                <div>
-
-                    <video width="390" id="video-clip" controls>
-                        <source src="src/chrome_japan.webm" type='video/webm; codecs="vp8, vorbis"'/>
-                        <source src="src/chrome_japan.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/>
-                        <source src="src/chrome_japan.ogv" type='video/ogg; codecs="theora, vorbis"'/>
-                        Your browser does not support the video tag
-                    </video>
-                    <div class="media-buttons">
-                        <input type="button" id="play-button" onclick="PlayVideo()" ; value="Play"/>
-                        <input type="button" id="pause-button" onclick="PauseVideo()" ; value="Pause" disabled/>
-                        <input type="button" id="mute" onclick="MuteUnMute()" value="Mute"/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            <input type="button" id="reflection-button" onclick="addReflection()" class="btn btn-default"
+                                   value="Add CSS reflection to video"/>
+                        </p>
+                        <p>
+                            <input type="button" id="play-button" onclick="PlayVideo()" ; value="Play"  class="btn btn-default"/>
+                            <input type="button" id="pause-button" onclick="PauseVideo()" ; value="Pause" disabled  class="btn btn-default"/>
+                            <input type="button" id="mute" onclick="MuteUnMute()" value="Mute"  class="btn btn-default"/>
+                        </p>
+                        <video width="390" id="video-clip" controls>
+                            <source src="src/chrome_japan.webm" type='video/webm; codecs="vp8, vorbis"'/>
+                            <source src="src/chrome_japan.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/>
+                            <source src="src/chrome_japan.ogv" type='video/ogg; codecs="theora, vorbis"'/>
+                            Your browser does not support the video tag
+                        </video>
                     </div>
-                </div>
 
-                <div id="audio-column" class="center">
-                    <audio id="audio-clip" width="670" controls>
-                        <source src="src/rushus-modal_blues.mp3" type="audio/mpeg"/>
-                        <source src="src/rushus-modal_blues.ogg" type="audio/ogg"/>
-                        Your browser does not support the audio tag
-                    </audio>
-                    <div class="media-buttons">
-                        <input type=button id="audio-play-button" onclick="PlayAudio()" value="Play"/>
-                        <input type=button id="audio-pause-button" onclick="PauseAudio()" value="Pause" disabled/>
-                        <input type=button id="audio-mute" onclick="MuteUnMuteAudio()" value="Mute"/>
+                    <div class="col-md-6">
+                        <p>
+                            <input type=button id="audio-play-button" onclick="PlayAudio()" value="Play"  class="btn btn-default"/>
+                            <input type=button id="audio-pause-button" onclick="PauseAudio()" value="Pause" disabled  class="btn btn-default"/>
+                            <input type=button id="audio-mute" onclick="MuteUnMuteAudio()" value="Mute" class="btn btn-default"/>
+                        </p>
+                        <audio id="audio-clip" width="670" controls>
+                            <source src="src/rushus-modal_blues.mp3" type="audio/mpeg"/>
+                            <source src="src/rushus-modal_blues.ogg" type="audio/ogg"/>
+                            Your browser does not support the audio tag
+                        </audio>
+
                     </div>
                 </div>
                 <script defer>
@@ -1860,23 +1907,6 @@ document.getElementById("video").<b>play</b>();
             </section>
 
             <section>
-                <style>
-                    #video-column {
-                        float: left;
-                        width: 50%;
-                        margin-top: 20px;
-                    }
-
-                    #reflection-button {
-                        margin: 20px 0;
-                    }
-
-                    #track-column {
-                        float: left;
-                        width: 45%;
-                        margin-top: 20px;
-                    }
-                </style>
                 <h1>Track Element</h1>
 
 <pre>
@@ -1887,108 +1917,110 @@ document.getElementById("video").<b>play</b>();
          src="<em>video-subtitles-en.vtt</em>" default />
 &lt;/<b>video</b>>
 </pre>
-                <div id="video-column" class="center">
-                    <video width="390" id="clip" class="playr_video" controls>
-                        <source src="src/Google_Developer_Stories.webm" type='video/webm; codecs="vp8, vorbis"'/>
-                        <track label="English subtitles" kind="subtitles" srclang="en" src="src/video-subtitles-en.vtt"
-                               default/>
-                        Your browser does not support the video tag
-                    </video>
-                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <video width="390" id="clip" class="playr_video" controls>
+                            <source src="src/Google_Developer_Stories.webm" type='video/webm; codecs="vp8, vorbis"'/>
+                            <track label="English subtitles" kind="subtitles" srclang="en" src="src/video-subtitles-en.vtt"
+                                   default/>
+                            Your browser does not support the video tag
+                        </video>
+                    </div>
 
-                <div id="track-column" class="center">
-                    <textarea style="font-size: 13px; font-family: monospace, courier; width: 380px; height: 250px"
-                              readonly>
-                        WEBVTT FILE
+                    <div class="col-md-6">
+                        <textarea style="font-size: 13px; font-family: monospace, courier; height: 250px"
+                                  readonly class="form-control">
+WEBVTT FILE
 
-                        1
-                        00:00:00.500 --> 00:00:02.000 D:vertical A:start
-                        The Web is always changing
+1
+00:00:00.500 --> 00:00:02.000 D:vertical A:start
+The Web is always changing
 
-                        2
-                        00:00:02.500 --> 00:00:04.300
-                        and the way we access it is changing
+2
+00:00:02.500 --> 00:00:04.300
+and the way we access it is changing
 
-                        3
-                        00:00:05.000 --> 00:00:07.000
-                        The source of that change is you
+3
+00:00:05.000 --> 00:00:07.000
+The source of that change is you
 
-                        4
-                        00:00:07.100 --> 00:00:11.000
-                        Developers all around the world who are using our tools to create great new things
+4
+00:00:07.100 --> 00:00:11.000
+Developers all around the world who are using our tools to create great new things
 
-                        5
-                        00:00:11.200 --> 00:00:13.200
-                        and with so many tools, the sky is the limit
+5
+00:00:11.200 --> 00:00:13.200
+and with so many tools, the sky is the limit
 
-                        6
-                        00:00:14.500 --> 00:00:16.500
-                        But it cant happen without you and your ideas
+6
+00:00:14.500 --> 00:00:16.500
+But it cant happen without you and your ideas
 
-                        7
-                        00:00:17.500 --> 00:00:18.700
-                        We want to know you better
+7
+00:00:17.500 --> 00:00:18.700
+We want to know you better
 
-                        8
-                        00:00:18.700 --> 00:00:21.000
-                        so we created a new place just for that
+8
+00:00:18.700 --> 00:00:21.000
+so we created a new place just for that
 
-                        9
-                        00:00:21.000 --> 00:00:22.000
-                        to hear from you
+9
+00:00:21.000 --> 00:00:22.000
+to hear from you
 
-                        10
-                        00:00:22.500 --> 00:00:25.000
-                        We want to hear what inspires you as a developer
+10
+00:00:22.500 --> 00:00:25.000
+We want to hear what inspires you as a developer
 
-                        11
-                        00:00:25.500 --> 00:00:27.000
-                        and how we can help.
+11
+00:00:25.500 --> 00:00:27.000
+and how we can help.
 
-                        12
-                        00:00:27.000 --> 00:00:30.800
-                        Here you can record a video, share stories with us and more
+12
+00:00:27.000 --> 00:00:30.800
+Here you can record a video, share stories with us and more
 
-                        13
-                        00:00:31.000 --> 00:00:34.000
-                        Let us know what being a Google developer means to you
+13
+00:00:31.000 --> 00:00:34.000
+Let us know what being a Google developer means to you
 
-                        14
-                        00:00:34.000 --> 00:00:38.200
-                        and you can talk to us in person at Google Developer events all over the world.
+14
+00:00:34.000 --> 00:00:38.200
+and you can talk to us in person at Google Developer events all over the world.
 
-                        15
-                        00:00:38.500 --> 00:00:41.000
-                        so we can learn how to support you better.
+15
+00:00:38.500 --> 00:00:41.000
+so we can learn how to support you better.
 
-                        16
-                        00:00:41.000 --> 00:00:44.600
-                        Oh, btw, we also started rolling a new site for Google Developers
+16
+00:00:41.000 --> 00:00:44.600
+Oh, btw, we also started rolling a new site for Google Developers
 
-                        17
-                        00:00:44.700 --> 00:00:49.400
-                        Not just code but community, news, tools and other resources
+17
+00:00:44.700 --> 00:00:49.400
+Not just code but community, news, tools and other resources
 
-                        18
-                        00:00:49.400 --> 00:00:51.000
-                        and cake
+18
+00:00:49.400 --> 00:00:51.000
+and cake
 
-                        19
-                        00:00:51.200 --> 00:00:54.000
-                        Like any open source project it's a work in progress
+19
+00:00:51.200 --> 00:00:54.000
+Like any open source project it's a work in progress
 
-                        20
-                        00:00:54.100 --> 00:00:57.000
-                        with your help it can be great
+20
+00:00:54.100 --> 00:00:57.000
+with your help it can be great
 
-                        21
-                        00:00:57.000 --> 00:01:00.000 L:12%
-                        developers.google.com/stories
+21
+00:00:57.000 --> 00:01:00.000 L:12%
+developers.google.com/stories
 
-                        21
-                        00:01:00.500 --> 00:01:04.000
-                        Change is important to the Web. Help us keep changing it together
-                    </textarea>
+21
+00:01:00.500 --> 00:01:04.000
+Change is important to the Web. Help us keep changing it together
+                        </textarea>
+                    </div>
                 </div>
             </section>
 
@@ -2059,8 +2091,8 @@ pre<b>:-webkit-full-screen</b> {
 </pre>
 
                 <div id="fs">
-                    <button id="slide-fs">Toggle slide fullscreen</button>
-                    <button id="snippet-fs">Toggle snippet fullscreen</button>
+                    <button id="slide-fs" class="btn btn-default">Toggle slide fullscreen</button>
+                    <button id="snippet-fs" class="btn btn-default">Toggle snippet fullscreen</button>
                     <div class="tohide">
                         <small>close: 'ENTER' or 'ESC'</small>
                     </div>
@@ -2261,6 +2293,12 @@ pre<b>:-webkit-full-screen</b> {
             </section>
         </section>
         <section id="css3">
+            <style>
+                #css3 input[type=range] {
+                    display: inline-block;
+                    width: 150px;
+                }
+            </style>
             <section>
                 <h1>CSS3</h1>
 
@@ -2269,47 +2307,11 @@ pre<b>:-webkit-full-screen</b> {
                      title="HTML5 Styling" alt="HTML5 Styling">
             </section>
             <section>
-                <style>
-                    #css3 .left, #css3 .right {
-                        float: left;
-                        width: 50%;
-
-                    }
-
-                    #css3 .left h2, #css3 .right h2 {
-                        font-size: .5em;
-                    }
-
-                    #css3 .right {
-                        float: right;
-                    }
-
-                    #css3 footer {
-                        font-size: 0.4em;
-                        text-align: left;
-                    }
-
-                    #css3 footer a {
-                        color: #ccc;
-                    }
-
-                    .row:nth-child(even) {
-                        background: #dde;
-                    }
-
-                    .row:nth-child(odd) {
-                        background: white;
-                    }
-
-                    #css3 .example {
-                        padding: 15px 0;
-                        width: 95%;
-                    }
-                </style>
                 <h1>CSS Selectors</h1>
 
-                <div class="left">
-                    <h2>Pseudo-classes</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Pseudo-classes</p>
 <pre>.row:<b>nth-child(even)</b> {
   background: #dde;
 }
@@ -2322,20 +2324,15 @@ pre<b>:-webkit-full-screen</b> {
 input:<b>checked</b> {
   border:1px solid #eee;
 }
-input:<b>:disabled</b> {
+input:<b>disabled</b> {
   background: #ccc;
 }
 </pre>
-                    <div class="example">
-                        <div class="row">Row 1</div>
-                        <div class="row">Row 2</div>
-                        <div class="row">Row 3</div>
-                        <div class="row">Row 4</div>
                     </div>
-                </div>
 
-                <div class="right">
-                    <h2>Specific attributes</h2>
+
+                    <div class="col-md-6">
+                        <p>Specific attributes</p>
 <pre>input<b>[type="text"]</b> {
   background: #eee;
 }
@@ -2350,7 +2347,7 @@ input<b>[name$="bar"]</b> { // end
 }
 </pre>
 
-                    <h2>Negation</h2>
+                    <p>Negation</p>
 <pre><b>:not</b>(.box) {
   color: #00c;
 }
@@ -2358,10 +2355,30 @@ input<b>[name$="bar"]</b> { // end
   display: block;
 }
 </pre>
+                    </div>
                 </div>
                 <div style="clear:both;"></div>
                 <p>Please check full list of selectos in <a href="http://www.w3schools.com/cssref/css_selectors.asp">w3schools.com</a>
                 </p>
+            </section>
+            <section>
+                <style>
+                    #css3 .example-row:nth-child(even) {
+                        background: #dde;
+                    }
+
+                    #css3 .example-row:nth-child(odd) {
+                        background: white;
+                    }
+
+                </style>
+                <h1>CSS Selectors</h1>
+                <div class="example">
+                    <div class="example-row">Row 1</div>
+                    <div class="example-row">Row 2</div>
+                    <div class="example-row">Row 3</div>
+                    <div class="example-row">Row 4</div>
+                </div>
             </section>
 
 
@@ -2399,29 +2416,24 @@ header {
                         text-align: left;
                     }
 
-                    #overflow-hidden {
-                        font-size: 25px;
+                    #overflow-hidden,
+                    #no-wrap,
+                    #ellipsis {
                         height: 1.1em;
                         overflow: hidden;
                     }
 
                     #no-wrap {
-                        font-size: 25px;
-                        height: 1.1em;
                         white-space: nowrap;
-                        overflow: hidden;
                     }
 
                     #ellipsis {
-                        font-size: 25px;
                         text-overflow: ellipsis;
                         white-space: nowrap;
-                        height: 1.1em;
-                        overflow: hidden;
                     }
 
-                    .slide-wrapping {
-                        width: 95%;
+                    #css3 input[type=range].slide-wrapping {
+                        width: 100%;
                     }
                 </style>
                 <h1>Text wrapping</h1>
@@ -2430,21 +2442,21 @@ header {
 }</pre>
 
                 <div id="wrapping">
-                    <div id="overflow-hidden" class="example">
+                    <p id="overflow-hidden" class="example">
                         A long cold winter delayed the blossoming of the millions of cherry, apricot, peach, and prune
                         plum trees covering hundreds of square miles of the Valley floor. Then, unlike many years, the
                         rains that followed were light and too early to knock the blossoms from their branches.
-                    </div>
-                    <div id="no-wrap" class="example">
+                    </p>
+                    <p id="no-wrap" class="example">
                         A long cold winter delayed the blossoming of the millions of cherry, apricot, peach, and prune
                         plum trees covering hundreds of square miles of the Valley floor. Then, unlike many years, the
                         rains that followed were light and too early to knock the blossoms from their branches.
-                    </div>
-                    <div id="ellipsis" class="example">
+                    </p>
+                    <p id="ellipsis" class="example">
                         A long cold winter delayed the blossoming of the millions of cherry, apricot, peach, and prune
                         plum trees covering hundreds of square miles of the Valley floor. Then, unlike many years, the
                         rains that followed were light and too early to knock the blossoms from their branches.
-                    </div>
+                    </p>
                 </div>
                 <input type="range" min="0" max="100" value="95" onchange="changeWrapping(event)"
                        class="slide-wrapping">
@@ -2921,8 +2933,9 @@ background:
                 </style>
                 <h1>Background enhancements</h1>
 
-                <div class="left">
-                    <h2>Background sizing</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Background sizing</p>
 <pre>#logo {
   background: url(logo.gif) center center no-repeat;
   <b>background-size:
@@ -2934,17 +2947,19 @@ background:
       </select>;</b>
 }
 </pre>
-                    <textarea id="background-textarea"></textarea>
-                </div>
-                <div class="right">
-                    <h2>Multiple backgrounds</h2>
+                        <textarea id="background-textarea"></textarea>
+                    </div>
+
+                    <div class="col-md-6">
+                        <p>Multiple backgrounds</p>
 <pre>div {
   background: url(src/zippy-plus.png) 10px center no-repeat,
             url(src/gray_lines_bg.png) 0 center repeat-x;
 }
 </pre>
 
-                    <div id="background-example" class="example">Test</div>
+                        <div id="background-example" class="example">Test</div>
+                    </div>
                 </div>
                 <script defer>
                     function changeBackgroundSize(event) {
