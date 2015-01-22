@@ -49,7 +49,6 @@
 			<div class="slides">
 				<section>
 					<h1>Geriausios praktikos</h1>
-					<h3>CS ir JS įrankiai</h3>
 					<p>
 						Darius Ašeriškis
 					</p>
@@ -110,8 +109,25 @@
                     <section>
                         <h2>OOCSS (1)</h2>
                         <p>
-                            Į CSS žiūrima kaip į lego detales iš kurių sudaroma svetainė
+                            <img src="/images/lego.png" height="200px" />
                         </p>
+               
+                            <ul>
+                                <li>
+                                Į CSS žiūrima kaip į lego detales iš kurių sudaroma svetainė
+                                </li>
+                                <li>
+                                    Jokio prisirišimo prie DOM
+                                </li>
+                                <li>
+                                    Tik klasės
+                                </li>
+                                <li>
+                                    Skatinamas stilių daugkartinis panaudojimas
+                                </li>
+                                
+                            </ul>
+              
                     </section>
                     <section>
                         <h2>OOCSS (2)</h2>
@@ -151,26 +167,47 @@
                         </ul>
                     </section>
                     <section>
-                        <h2>Užduotis 1. Greita pažintis su OOCSS</h2>
+                        <h2>CSS vs OOCSS</h2>
+     
+                                             <pre><code data-trim contenteditable>
+/* CSS */
+.ul.menu {} 
+.ul.menu li {} 
+.ul.menu li a {}
+
+/* OOCSS */
+.menu {}
+.menu-item {}
+.menu-item-link {}
+					</code></pre>
+                        
                     </section>
                     <section>
+                        <h2>BEMCSS</h2>
+                        <p>
+                            Iš esmės - konkretus OOCSS principu sukurtas karkasas (Yandex.ru)
+                        </p>
+                        <p><a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax" target="_blank">daugiau informacijos</a></p>
+                    </section>
+                    <section>
+                        
                         <h2>SMACSS</h2>
                         <p>
-                            Apibrėžta organizacinė sistema ir pagrindiniai aspektai ir geriausios praktikos.
+                            Apibrėžta organizacinė sistema su pagrindiniais aspektais ir geriausiomis praktikomis.
                         </p>
+                        <ul>
+                            <li>Padidinta semantinė prasmė HTML kodo ir turinio</li>
+                            <li>Sumažinta stilių priklausomybė nuo išdėstymo</li>
+                        </ul>
                     </section>
-                    <section>
-                        <h2>BEM CSS</h2>
-                        <p>
-                            Konkretus OOCSS įgyvendinimas
-                        </p>
-                    </section>
+
                    
                     <section>
                         <h2>ACSS (1)</h2>
                         <p>
-                            Svetainė sudaryta iš atomų, kurie sudaro molekulias, kurios sudaro organizmus, kurie sudaro šablonus, kurie sudaro puslapius.
+                            Svetainė sudaryta iš atomų, kurie sudaro molekules, kurios sudaro organizmus, kurie sudaro šablonus, kurie sudaro puslapius.
                         </p>
+                        <img src="/images/patterns.png" />
                     </section>
                     <section>
                         <h2>ACSS (2)</h2>
@@ -182,7 +219,7 @@
                                         Aiški chierarchine struktūra
                                     </li>
                                     <li>
-                                        Puikiai tinka kuriant productų linijas
+                                        Puikiai tinka kuriant produktų linijas
                                     </li>
                                     <li>
                                         Skatina dokumentaciją
@@ -204,7 +241,16 @@
                         </ul>
                     </section>
                     <section>
-                        <h2>Užduotis 2. Gyva dokumentacija</h2>
+                        <h2>ACSS (3)</h2>
+                        <p>
+                            <a href="http://demo.patternlab.io/" target="_blank">demo</a>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Gyva dokumentacija</h2>
+                        <p>
+                            Sukurkime headerį su paieškos forma
+                        </p>
                     </section>
                 </section>
                 
@@ -222,20 +268,134 @@
                         </p>
 					</section>
 					<section>
-						<h2>CSS Gridai (2)</h2>
+						<h2>CSS Gridai (2) - CSS</h2>
+                                             <pre><code data-trim contenteditable>
+.row:after, .row:before, .clearfix:before, .clearfix:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
 
-					</section>
-					<section>
-						<h2>Media elementas (1)</h2>
-                        <p>Sudarytas iš paveikslėlio ir teksto bloko šalia</p>
-					</section>
-					<section>
-						<h2>Media elementas (2)</h2>
+.cell {
+    float:left;
+}
 
+.size1of2 {
+    width:50%;
+}
+.size1of4 { 
+    width:25%;
+}
+
+                                    
+
+					</code></pre>
 					</section>
                     
 					<section>
-						<h2>Užduotis 1. Suformuoti svetainės išdėstymą</h2>
+						<h2>CSS Gridai (3) - Struktūra</h2>
+                                             <pre><code data-trim contenteditable>
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;cell size1of2&quot;&gt;A&lt;/div&gt;
+    &lt;div class=&quot;cell size1of4&quot;&gt;B&lt;/div&gt;
+    &lt;div class=&quot;cell size1of4&quot;&gt;C&lt;/div&gt;
+&lt;/div&gt;
+					</code></pre>
+					</section>
+                    <section>
+						<h2>CSS Gridai (3) - Struktūra</h2>
+<style>
+     .row:after, .row:before, .clearfix:before, .clearfix:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+        clear: both;
+         background-color: yellow;
+    }
+
+    .cell {
+        float:left;
+    }
+
+    .size1of2 {
+        width:50%;
+        background-color: yellow;
+    }
+    .size1of4 { 
+        width:25%;
+        background-color: green;
+    }               
+</style>
+<div class="row">
+    <div class="cell size1of2">A</div>
+    <div class="cell size1of4">B</div>
+    <div class="cell size1of4">C</div>
+</div>
+
+					</section>
+					<section>
+						<h2>Media elementas (ME)</h2>
+                        <p>Sudarytas iš paveikslėlio ir teksto bloko šalia</p>
+					</section>
+					<section>
+						<h2>ME - Struktūra </h2>
+                        <pre><code data-trim contenteditable>
+&lt;div class=&quot;media&quot;&gt;
+    &lt;img class=&quot;media-img&quot; src=&quot;http://lorempixel.com/400/200/&quot; /&gt;
+    &lt;div class=&quot;media-bd&quot;&gt;Labai gera diena&lt;/div&gt;
+&lt;/div&gt;
+					</code></pre>
+					</section>
+					<section>
+						<h2>ME - CSS </h2>
+                        <pre><code data-trim contenteditable>
+.media {
+    margin:10px;
+}
+.media, .media-bd {
+    overflow:hidden; 
+    _overflow:visible; 
+    zoom:1;
+}
+.media-img {
+    float:left; 
+    margin-right: 10px; 
+    display:block;
+}
+					</code></pre>
+					</section>
+					<section>
+						<h2>ME - Rezultatas </h2>
+<style>
+        .media {
+            margin:30px;
+        }
+        .media, .media-bd {
+            overflow:hidden; 
+            _overflow:visible; 
+            zoom:1;
+                text-align: left;
+        }
+        .media-img {
+            float:left; 
+            margin:  0 30px 0 0  !important; 
+            display:block;
+            box-shadow: none  !important;
+        }                   
+                        </style>
+<div class="media">
+    <img class="media-img" src="http://lorempixel.com/400/200/" />
+    <div class="media-bd">Labai gera diena! <br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum nec justo tincidunt venenatis. 
+    </div>
+</div>
+
+					</section>
+					<section>
+						<h2>Suformuoti svetainės išdėstymą naudojant media ir css gridą</h2>
 					</section>
 				</section>
                 
@@ -243,6 +403,20 @@
 					<section>
 						<h2>JS bibliotekos</h2>
 					</section>
+                    <section>
+                        <h2>Bendrai apie JS bibliotekas</h2>
+                        <ul>
+                            <li>
+                                Daugelis problemų jau yra išspręsta
+                            </li>
+                            <li>
+                                Standantizuotos žinios
+                            </li>
+                            <li>
+                                Padidina programavimo našumą
+                            </li>
+                        </ul>
+                    </section>
 					<section>
 						<h2>Bibliotekos</h2>
                         <ul>
@@ -261,8 +435,24 @@
                             <li>...</li>
                         </ul>
 					</section>
+                    
                     <section>
-						<h2>Užduotis 1. Vanila</h2>
+						<h2>Kaip išsirinkti</h2>
+                        <ul>
+                            <li>
+                                Priklausomybės
+                            </li>
+                            <li>
+                                Dydis
+                            </li>
+                            <li>
+                                Galimybės ir lankstumas
+                            </li>
+                            <li>
+                                Palaikymas
+                            </li>
+                            <li>...</li>
+                        </ul>
 					</section>
 				</section>
                 
@@ -277,7 +467,7 @@
                                 Didelis kapitalas būtinų žinių, besikartojančių visuose projektuose
                             </li>
                             <li>
-                                Pradinis švarus puslapis
+                                Pradinis švarus puslapis - puiki vieta pradėti
                             </li>
                         </ul>
 					</section>
@@ -303,10 +493,6 @@
                             <li>...</li>
                         </ul>
 					</section>
-                    <section>
-                        <h2>Užduotis 1. Sukurti svetainę su Bootstrap</h2>
-                    </section>
-
 				</section>
                 
                 
@@ -327,11 +513,24 @@
 					</section>
 					<section>
 						<h2>doT.js pavyzdys</h2>
-					</section>
-					<section>
-						<h2>Užduotis 1. Sąrašo generavimas</h2>
-					</section>
+                        <pre><code data-trim contenteditable>
+&lt;script type=&quot;text/x-dot-template&quot;&gt;
+{{~ it.items : item }}
+&lt;div class=&quot;media&quot;&gt;
+    &lt;img class=&quot;media-img&quot; src=&quot;{{= item.url }}&quot; /&gt;
+    &lt;div class=&quot;media-bd&quot;&gt;
+        {{? item.val &amp;&amp; item.val.length > 15 }}
+            {{= item.val }}
+        {{??}}
+            Too short message
+        {{?}}
+    &lt;/div&gt;
+&lt;/div&gt;
+{{~}}
+&lt;/script&gt;
+					</code></pre>
       				</section>
+                </section>
                 <section>
 					<section>
 						<h2>Trumpai</h2>

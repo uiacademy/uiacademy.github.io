@@ -191,6 +191,23 @@ a, a:hover, a:focus {
 }
 
 
+h1, h2, h3, h4, p {
+ margin: 0 0 10px 0;
+}
+
+table thead {
+    font-weight: bold;
+}
+table td {
+ vertical-align: top;   
+ padding:5px;
+}
+
+
+
+
+
+
 
 
 @media all and (max-width: 959px) {
@@ -198,9 +215,11 @@ a, a:hover, a:focus {
         padding: 10px;
         width: 100%;
     }
+    
+
 }
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 500px) {
 
     .mob-size1of1 {
         width: 100%;
@@ -209,6 +228,10 @@ a, a:hover, a:focus {
     .item {
         border-left: none;
         padding:10px 10px;
+    }
+    
+    table td {
+     display: block;
     }
 }
 

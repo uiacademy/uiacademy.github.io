@@ -1,0 +1,137 @@
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+input[type="text"] {
+    background-color:white;
+    border: 0;
+    padding:5px;
+    
+}
+
+input[type="submit"] {
+    background-color:white;
+    padding: 5px;
+    border:none;
+}
+
+
+
+body {
+  padding:0;
+  margin:0;
+}
+
+.page {
+  width:1080px;
+  padding: 0 20px;
+  margin:0 auto; 
+}
+
+.header {
+  height: 60px;
+  background-color:#00ACD9;
+  line-height:60px;
+  vertical-align:center;
+}
+.header-content {
+}
+
+.logo {
+  color:white;
+  font-family: sans-serif;
+  font-size:30px;
+}
+
+
+.header-search {
+  float:right;
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+}
+
+.navigation {
+    background-color: #f4f4f4    
+}
+
+.menu {
+    margin:0;
+    list-style: none;
+    padding: 20px 0;
+}
+
+.menu-item {
+    float: left;
+    padding-right: 30px;
+}
+.menu-item-link {
+    color:black;
+    text-decoration: none;
+}
+
+.sidebar {  
+    width: 25%;
+    float: left;
+}
+
+.links{
+    padding-left:15px;
+}
+
+.body {
+    padding-top: 30px;
+}
+.body-content {
+    width: 75%;
+    float: left;
+}
+
+
+.item {
+    width:25%;
+    float: left;
+}
+
+.item-header { 
+    margin-left:20px;
+}
+
+.item-header img {
+    width:100%;  
+}
+
+.item-text {
+    margin:20px 20px 20px 40px;
+    text-align: justify;
+}
+.about {
+    text-align: justify;
+}
+
+

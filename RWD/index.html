@@ -127,14 +127,9 @@
 					</section>
 					<section>
 						<h2>
-							Demonstracija ir užduotis
+							Demonstracija
 						</h2>
 						<p><a href="http://www.liquidapsive.com/" target="_blank">Pavyzdinė svetainė</a></p>
-						<p>
-							Pritaikyte svetainę pasirinktam įrenginiui:
-						<a href="http://www.liquidapsive.com/" target="_blank">Pavyzdinė svetainė</a>
-						</p>
-
 					</section>
 				</section>
 
@@ -177,14 +172,23 @@
                         <pre><code data-trim contenteditable>
 
 &lt;picture&gt;
-  &lt;source media=&quot;(min-width: 40em)&quot;
-    srcset=&quot;big.jpg 1x, big-hd.jpg 2x&quot;&gt;
+  &lt;source
+    srcset=&quot;big.jpg&quot; media=&quot;(max-width: 800px)&quot;&gt;
   &lt;source 
-    srcset=&quot;small.jpg 1x, small-hd.jpg 2x&quot;&gt;
+    srcset=&quot;small-hd.jpg&quot;&gt;
   &lt;img src=&quot;fallback.jpg&quot; alt=&quot;&quot;&gt;
 &lt;/picture&gt;
 					</code></pre>
 					</section>
+                    
+                    <section>
+                    <picture>
+    <source srcset="http://lorempixel.com/400/200/?2" media="(max-width: 800px)">
+    <source srcset="http://lorempixel.com/800/400/?1">
+  <img src="http://lorempixel.com/800/400/?1" alt="">
+</picture>
+                        
+                    </section>
                     
                     <section>
 						<h2>srcset atributas</h2>
@@ -214,7 +218,7 @@
 						<h3>Features</h3>
 						<ul>
                             <li>Specializuoti poreikiai</li>
-                            <li>Neviskas svetaineja reikalinga visų įrengių vartotojams</li>
+                            <li>Neviskas svetaineje reikalinga visų įrengių vartotojams</li>
                             <li>Įrenginio apribojimai ir galimybės</li>
                         </ul>
 					</section>  
@@ -248,52 +252,26 @@
 					</section>
                     
                     
-                    
                     <section>
-						<h2>Pavyzdžiui. Proporcingas paveisklėlis</h2>
-						<p>
-                            Turime paveiklėlį, kuris išpildo visą erdvę. 
-                        </p>
-					</section>
-                    
-                    <section>
-						<h2>Pavyzdžiui. Sąrašas</h2>
-						<p>
-                            Turime el. dienoraščio įrašus, kuriuos reikia išdėstyti - platūs, du trumpi paveikslėliai.
-                        </p>
-					</section>
-                    
-                    <section>
-						<h2>Sprendimas A</h2>
-						<p>
-                            Paremtas proporcingais paveikslėliais
-                        </p>
-					</section>
-                    
-                    <section>
-						<h2>Sprendimas B</h2>
-						<p>
-                            Parentas eilutės elementais.
-                        </p>
-					</section>
-                    
-
-                    
-                    <section>
-						<h2>Užduotys</h2>
+						<h2>Užduotis</h2>
                         <ul>
+        
                             <li>
-                                Paveisklėlių pritaikymas
-                            </li>
-                            
-                            <li >
-                                Vykdymas esant poreikiui 
-                            </li>
-                            
-                            <li >
-                                Prisitaikantis productų sąrašas
+                                Prisitaikantis sąrašas
                             </li>
                         </ul>
+                        <pre><code data-trim contenteditable>
+
+&lt;div class=&quot;item&quot;&gt;
+    &lt;div class=&quot;item-header&quot;&gt;
+        &lt;img src=&quot;http://lorempixel.com/400/200/?2&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;item-content&quot;&gt;
+        Kaina: $359 &lt;br&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Add to cart&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+					</code></pre>
 					</section>
                     
 				</section>
@@ -361,11 +339,11 @@
 						<h2>Užduotys</h2>
                         <ul>
                             <li>
-                                Pavyzdinės svetainės pritaikymas top down strategija
+                                Pavyzdinės svetainės pritaikymas top down strategija (<a href="task1/index.html" target="_blank">Pavyzdinė svetainė</a>)
                             </li>
                             
                             <li >
-                                Mobilios svetainės pritaikymas bottom up strategija
+                                Mobilios svetainės pritaikymas bottom up strategija (<a href="task2/index.html" target="_blank">Pavyzdinė svetainė</a>)
                             </li>
                         </ul>
 					</section>
