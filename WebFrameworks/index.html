@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>OOP in javascript</title>
+
+    <meta name="description" content="Objektinis programavimas">
+    <meta name="author" content="Ramūnas Kiupelis">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../revealjs/css/reveal.min.css">
+    <link rel="stylesheet" href="../revealjs/css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../revealjs/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../revealjs/css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../revealjs/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="overlay">
+    <div class="overlay-icon"></div>
+    <div class="overlay-line"></div>
+</div>
+
+<div class="reveal">
+
+
+    <!--
+        Kodel reikia naudoti Framework
+        nuo kada pradeti naudoti frameork.
+        Features list.
+    -->
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h1>Javascript</h1>
+            <h2>Frameworks overview</h2>
+            <p><small>Ramūnas Kiupelis</small></p>
+            <p><small><time datetime="2015-01-12 11:00">2015-01-12</time></small></p>
+        </section>
+        <section>
+            <h2>Choice</h2>
+            <img src="img/frameworks.png" width="80%"/>
+            <!-- mvc http://www.slideshare.net/deepusnath/javascript-frameworks-comparison-angular-knockout-ember-and-backbone -->
+            <aside class="notes">
+                MVP - Model View Presenter <!-- http://en.wikipedia.org/wiki/Model-view-presenter -->
+                MVVM - Model View ViewModel <!-- http://en.wikipedia.org/wiki/Model_View_ViewModel -->
+                MVC - Model View Controller <!-- http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller -->
+            </aside>
+        </section>
+        <section>
+            <h2>The big three</h2>
+            <img src="img/frameworks-big-three.png" />
+        </section>
+        <section>
+            <section>
+                <img src="img/logo-frameworks.png">
+            </section>
+            <section>
+                <p><img src="img/logo-angular.png" alt=""/></p>
+                <ul>
+                    <li>Brat Tech LLC, Google and community.</li>
+                    <li>Initially released on 2009</li>
+                    <li>Current stable release 1.3.8</li>
+                    <li>Size:
+                        <ul>
+                            <li>122 KiB production</li>
+                            <li>926 KiB development</li>
+                        </ul>
+                    </li>
+                    <li><a href="https://github.com/angular/angular.js">https://github.com/angular/angular.js</a></li>
+                </ul>
+            </section>
+            <section>
+                <p><img src="img/logo-backbone.png" alt=""/></p>
+                <ul>
+                    <li>Jeremy Ashkenas</li>
+                    <li>Initially released on October 13, 2010</li>
+                    <li>Current stable release 1.1.2</li>
+                    <li>Size:
+                        <ul>
+                            <li>6.3 KB production</li>
+                            <li>56 KB development</li>
+                        </ul>
+                    </li>
+                    <li><a href="https://github.com/jashkenas/backbone">https://github.com/jashkenas/backbone</a></li>
+                </ul>
+            </section>
+            <section>
+                <p><img src="img/logo-ember.png" alt=""/></p>
+                <ul>
+                    <li>Yehuda Katz, Tom Dale and Ember.js contributors</li>
+                    <li>Initially released on 2011</li>
+                    <li>Current stable release 1.9.1</li>
+                    <li>Size:
+                        <ul>
+                            <li>1.48MB production (without dependencies 348.74KB) </li>
+                            <li>1.55MB development</li>
+                        </ul>
+                    </li>
+
+                    <li><a href="https://github.com/emberjs/ember.js">https://github.com/emberjs/ember.js</a></li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h1>Projects activity</h1>
+            </section>
+            <section>
+                <h1>Commits</h1>
+                <h2>angular.js</h2>
+                <img src="img/commit-angular.png" />
+                <img src="img/commit-angular-2.png" />
+            </section>
+            <section>
+                <h1>Commits</h1>
+                <h2>backbone</h2>
+                <img src="img/commit-backbone.png" />
+                <img src="img/commit-backbone-2.png" />
+            </section>
+            <section>
+                <h1>Commits</h1>
+                <h2>ember.js</h2>
+                <img src="img/commit-ember.png" />
+                <img src="img/commit-ember-2.png" />
+            </section>
+            <section>
+                <h1>Pulse</h1>
+                <h2>angular.js</h2>
+                <img src="img/pulse-angular.png">
+            </section>
+            <section>
+                <h1>Pulse</h1>
+                <h2>backbone.js</h2>
+                <img src="img/pulse-backbone.png">
+            </section>
+            <section>
+                <h1>Pulse</h1>
+                <h2>ember.js</h2>
+                <img src="img/pulse-ember.png">
+            </section>
+            <section>
+                <style>
+                    #contributors {
+                        border: 1px solid #CCCCCC;
+                        font-size: 0.8em;
+                    }
+                    #contributors td, #contributors th{
+                        border: 1px solid #CCCCCC;
+                        padding: 10px 15px;
+                    }
+                </style>
+                <h2>Summary</h2>
+                <p><small>Based on GitHub information</small></p>
+                <table id="contributors">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Open issues</th>
+                            <th>Closed issues</th>
+                            <th>Stars</th>
+                            <th>Forks</th>
+                            <th>Contributors</th>
+                            <th>Commits</th>
+                        </tr>
+                        </thead>
+                    <tbody>
+                        <tr>
+                            <td>Angular</td>
+                            <td>793</td>
+                            <td>4720</td>
+                            <td>33931</td>
+                            <td>13468</td>
+                            <td>1148</td>
+                            <td>6337</td>
+                        </tr>
+                        <tr>
+                            <td>Backbone</td>
+                            <td>24</td>
+                            <td>1936</td>
+                            <td>20272</td>
+                            <td>4572</td>
+                            <td>245</td>
+                            <td>2738</td>
+                        </tr>
+                        <tr>
+                            <td>Ember</td>
+                            <td>177</td>
+                            <td>2845</td>
+                            <td>12361</td>
+                            <td>2662</td>
+                            <td>445</td>
+                            <td>8517</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h1><a href="https://www.openhub.net/p/compare?project_0=AngularJS&project_1=Backbone.js&project_2=Ember.js">OpenHub</a></h1>
+                <img src="img/openhub.png" width="80%"/>
+            </section>
+            <section>
+                <h1>Trends</h1>
+                <script type="text/javascript" src="//www.google.com/trends/embed.js?hl=en-US&q=ember.js,+angular.js,+backbone.js&cmpt=q&tz&tz&content=1&cid=TIMESERIES_GRAPH_0&export=5&w=900&h=430"></script>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Dependencies</h2>
+                <img src="img/dependent.jpg">
+            </section>
+            <section>
+                <img src="img/logo-angular.png" />
+                <p>No dependencies</p>
+                <img src="img/broken-chain.jpg" width="40%"/>
+            </section>
+            <section>
+                <img src="img/logo-backbone.png" />
+                <p>Dependencies</p>
+                <p>
+                    <img src="img/logo-underscore.png" width="40%" style="float: left" />
+                    <img src="img/logo-jquery.png" width="40%" style="float: right" />
+                </p>
+            </section>
+            <section>
+                <img src="img/logo-ember.png">
+                <p>Dependencies</p>
+                <img src="img/logo-handlebars.png" width="35%" style="float: left"/>
+                <img src="img/logo-jquery.png" width="40%" style="float: right"/>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h1>Data binding</h1>
+            </section>
+            <section>
+                <h1>Angular</h1>
+                <img src="img/data-binding-angular.png" />
+                <ul>
+                    <li>Data binding is fully supported</li>
+                    <li>Two ways data binding</li>
+                    <li>Models use standard JSON properties</li>
+                    <li>Provides options for creating custom bindings</li>
+                </ul>
+            </section>
+            <section>
+                <h1>Backbone</h1>
+                <ul>
+                    <li>Data binding is not supported by default</li>
+                    <li>There are plugins to support data-binding Epoxy.js</li>
+                </ul>
+            </section>
+            <section>
+                <h1>ember.js</h1>
+                <ul>
+                    <li>Data binding is fully supported</li>
+                    <li>Models use getters and setters, but the binding is automatically</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h1>Routers</h1>
+                <ul>
+                    <li>Maps an url to javascript function</li>
+                    <li>Used for routing your application URL's when using hash tags(#)</li>
+                </ul>
+            </section>
+            <section>
+                <h1>Angular</h1>
+                <ul>
+                    <li>person/12/1102</li>
+                </ul>
+                <pre style="max-height:600px">
+                    <code class="javascript" style="max-height:600px">
+phonecatApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/person', {
+        templateUrl: 'partials/person-list.html',
+        controller: 'PersonListCtrl'
+      }).
+      when('/person/:id', {
+        templateUrl: 'partials/person-detail.html',
+        controller: 'PersonDetailCtrl'
+      }).
+      when('/person/:id/:work_id', {
+        templateUrl: 'partials/work-detail.html',
+        controller: 'WorkDetailCtrl'
+      }).
+      otherwise({
+        redirectTo: '/person'
+      });
+  }]);
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h1>Backbone</h1>
+                <ul>
+                    <li>person/12/1102</li>
+                </ul>
+                <pre style="max-height:600px">
+                    <code class="javascript" style="max-height:600px">
+var Workspace = Backbone.Router.extend({
+  routes: {
+    "person":            "person",
+    "person/:id":        "person",
+    "person/:id/:work":  "work"
+  },
+
+  person: function(id, work) {
+    ...
+  }
+});
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h1>ember</h1>
+                <ul>
+                    <li>person/12/1102</li>
+                </ul>
+                <pre style="max-height:600px">
+                    <code class="javascript" style="max-height:600px">
+App.Router.map(function() {
+  this.resource('person', { path: '/person/:person_id' }, function() {
+    this.resource('work', { path: '/:work_id' });
+  });
+});
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h1>Views</h1>
+            </section>
+            <section>
+                <h1>Angular</h1>
+                <ul>
+                    <li>Uses HTML as templating language</li>
+                    <li>Automatically pulls in HTML templates via AJAX when needed</li>
+                </ul>
+                <pre style="max-height:600px">
+                    <code class="html" style="max-height:600px">
+&lt;ul&gt;
+    &lt;li ng-repeat="framework in frameworks"
+                        title="{{framework.description}}"&gt;
+        {{framework.name}}
+    &lt;/li&gt;
+&lt;/ul&gt;
+                    </code>
+                </pre>
+                <aside class="notes">
+                    Angular's Templating engine is simply HTML with binding expressions baked-in. Binding expressions are surrounded by double curly braces:
+                </aside>
+            </section>
+            <section>
+                <h1>Backbone</h1>
+                <ul>
+                    <li>Can be integrated with many other third-party template engines </li>
+                    <li>Default template engine is Underscore templates</li>
+                </ul>
+                <pre>
+                    <code class="html">
+&lt;ul&gt;
+    &lt;% _.each(frameworks, function(framework) { %&gt;
+        &lt;li title="&lt;%- framework.description %&gt;"&gt;
+            &lt;%- framework.name %&gt;
+        &lt;/li&gt;
+    &lt;% }); %&gt;
+&lt;/ul&gt;
+                    </code>
+                </pre>
+                <aside class="notes">
+                    While Backbone can be integrated with many third-party template engines, the default choice is Underscore templates. Since Underscore is a Backbone dependency and you already have it on your page, you can easily take advantage of its templating engine without adding any additional dependencies for your application. On the downside, the templating engine of Underscore is very basic and you usually have to throw javascript into the mix, as you can see in our example
+                </aside>
+            </section>
+            <section>
+                <h1>Ember</h1>
+                <ul>
+                    <li>Very easy to create re-usable components</li>
+                    <li>Handlebars are used for templating</li>
+                </ul>
+                <pre>
+                    <code class="html">
+&lt;ul&gt;
+    {{#each frameworks}}
+        &lt;li {{bind-attr title=description}}&gt;
+            {{name}}
+        &lt;/li&gt;
+    {{/each}}
+&lt;/ul&gt;
+                    </code>
+                </pre>
+                <aside class="notes">
+                    Ember currently uses the Handlebars template engine, which is an extension to the popular Mustache templating engine. A new Handlebars variant, called HTMLBars is currently in the works. Handlebars does not understand DOM - all it does is a simple string transformation. HTMLBars will understand DOM, so the variable interpolation will be context aware. As HTMLBars is still not production-ready, we will show the Handlebars way of printing the framework list:
+                </aside>
+            </section>
+        </section>
+        <section>
+            <h2>Try it</h2>
+            <p><img src="img/todomvc.png"></p>
+            <p><a href="http://todomvc.com/">Todo List</a></p>
+        </section>
+        <section>
+            <section>
+                <h2>Important questions!</h2>
+                <ul>
+                    <li>Do you really need third-party library?</li>
+                    <li>Should you build your custom library?</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Several problems with third-party library</h2>
+                <ul>
+                    <li>Libraries creates code lock-ins. Not possible to replace easily</li>
+                    <li>Many library updates are not backward compatible</li>
+                    <li>Abstractions provided by libraries make developers ignore performance issues</li>
+                    <li>Writing clean, efficient & maintainable code is the responsibility of developers. In the end, libraries are blamed for any performance issues.</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <p>In the end, the only conclusion is choose wisely.</p>
+        </section>
+    </div>
+</div>
+
+<script src="../revealjs/lib/js/head.min.js"></script>
+<script src="../revealjs/js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: '../revealjs/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: '../revealjs/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../revealjs/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../revealjs/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: '../revealjs/plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: '../revealjs/plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
