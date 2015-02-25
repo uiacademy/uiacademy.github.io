@@ -3468,6 +3468,360 @@ div {
                 https://github.com/lukehoban/es6features
             </section>
             <section>
+                <h1>Arrow Functions</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+let square = x => x * x;
+let add = (a, b) => a + b;
+let pi = () => 3.1415;
+
+console.log(square(5));
+console.log(add(3, 4));
+console.log(pi());
+
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+25
+7
+3.1415
+                </code></pre>
+            </section>
+            <section>
+                <h1>Block scope</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+var x = 0;
+for (let i = 0; i < 10; i++) {
+    x += 10;
+}
+try {
+    console.log(i);
+} catch(e) {
+    console.log('i does not exist here!');
+}
+
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>10</code></pre>
+            </section>
+            <section>
+                <h1>Classes and Inheritance</h1>
+                <p>CODE</p>
+                <pre><code>
+class Polygon {
+    constructor(height, width) { //class constructor
+        this.name = 'Polygon';
+        this.height = height;
+        this.width = width;
+    }
+
+    sayName() { //class method
+        console.log('Hi, I am a', this.name + '.');
+    }
+}
+
+class Square extends Polygon {
+    constructor(length) {
+        super(length, length); //call the parent method with super
+        this.name = 'Square';
+    }
+
+    get area() { //calculated attribute getter
+        return this.height * this.width;
+    }
+}
+
+let s = new Square(5);
+
+s.sayName();
+console.log(s.area);
+
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+Hi, I am a Square.
+25
+                </code></pre>
+            </section>
+            <section>
+                <h1>Default Parameters</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+function sayMsg(msg='This is a default message.') {
+    console.log(msg);
+}
+
+sayMsg();
+sayMsg('This is a different message!');
+
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+This is a default message.
+This is a different message!
+                </code></pre>
+            </section>
+            <section>
+                <h1>Destructured Assignment</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+let [one, two] = [1, 2];
+let {three, four} = {three: 3, four:  4};
+
+console.log(one, two, three, four);
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+1 2 3 4
+                </code></pre>
+            </section>
+            <section>
+                <h1>Generators</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+function* range(start, end, step) {
+    while (start < end) {
+        yield start;
+        start += step;
+    }
+}
+
+for (let i of range(0, 10, 2)) {
+    console.log(i);
+}
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+0
+2
+4
+6
+8
+                </code></pre>
+            </section>
+            <section>
+                <h1>Iterators</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+let arr = [1, 2, 3, 4, 5];
+let sum = 0;
+
+for (let v of arr) {
+    sum += v;
+}
+
+console.log('1 + 2 + 3 + 4 + 5 =', sum);
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+1 + 2 + 3 + 4 + 5 = 15
+                </code></pre>
+            </section>
+            <section>
+                <h1>MAP</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+let x = new Map([[1, 'is a number key']]);
+let today = new Date()
+
+//anything can be a key
+x.set(today.toString(), 111)
+x.set(today, 222);
+x.delete(today.toString());
+
+console.log('The map contains', x.size, 'elements.');
+console.log('The map has a today Date key:', x.has(today));
+console.log('The map has a today string key:', x.has(today.toString()));
+
+//values and keys
+x.forEach((value, key, map) => console.log(value, key, map));
+
+//iterable
+for (let value of x) {
+    console.log(value);
+}
+
+//iterable values
+for (let value of x.values()) {
+    console.log(value);
+}
+
+//iterable keys
+for (let value of x.keys()) {
+    console.log(value);
+}
+
+//iterable entries (key, value)
+for (let value of x.entries()) {
+    console.log(value);
+}
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+The map contains 2 elements.
+The map has a today Date key: true
+The map has a today string key: false
+is a number key 1 [object Map]
+222 Wed Feb 25 2015 14:28:17 GMT+0200 (EET) [object Map]
+1,is a number key
+Wed Feb 25 2015 14:28:17 GMT+0200 (EET),222
+is a number key
+222
+1
+Wed Feb 25 2015 14:28:17 GMT+0200 (EET)
+1,is a number key
+Wed Feb 25 2015 14:28:17 GMT+0200 (EET),222
+                </code></pre>
+            </section>
+            <section>
+                <h1>Promises</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+var longFn = function() {
+    return new Promise(function(res, rej) {
+        setTimeout(res, 1000);
+    });
+};
+
+var coolFn = function() {
+    console.log('cool');
+};
+
+// logs cool after 1 second
+longFn().then(coolFn);
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+cool
+                </code></pre>
+            </section>
+            <section>
+                <h1>Rest Parameters</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+function format(str, ...args) {
+    return str.replace(/\{\s*(\d+)\s*\}/g, function(m, n) {
+        return args[n];
+    });
+}
+
+let msg = format(
+    'The {0}st arg is a string, the {1} are {2}.',
+    1,
+    'rest',
+    'unknown'
+);
+
+console.log(msg);
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+The 1st arg is a string, the rest are unknown.
+                </code></pre>
+            </section>
+            <section>
+                <h1>Set</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+let x = new Set([1, 2, 3, 4, 4, 4, 5]);
+
+x.add(6);
+x.delete(2);
+
+console.log('The set contains', x.size, 'elements.');
+console.log('The set has 1:', x.has(1));
+console.log('The set has 8:', x.has(8));
+
+//values and keys are the same in a set
+x.forEach((value, key, set) => console.log(value, key, set));
+
+//iterable
+for (let value of x) {
+    console.log(value);
+}
+
+//iterable values
+for (let value of x.values()) {
+    console.log(value);
+}
+
+//iterable keys
+for (let value of x.keys()) {
+    console.log(value);
+}
+
+//iterable entries (key, value)
+for (let value of x.entries()) {
+    console.log(value);
+}
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+The set contains 5 elements.
+The set has 1: true
+The set has 8: false
+1 1 [object Set]
+3 3 [object Set]
+4 4 [object Set]
+5 5 [object Set]
+6 6 [object Set]
+1
+3
+4
+5
+6
+1
+3
+4
+5
+6
+1
+3
+4
+5
+6
+1,1
+3,3
+4,4
+5,5
+6,6
+                </code></pre>
+            </section>
+            <section>
+                <h1>Spread Operator</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+function add(a, b) {
+    return a + b;
+}
+
+let nums = [5, 4];
+
+console.log(add(...nums));
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+9
+                </code></pre>
+            </section>
+            <section>
+                <h1>Template Literals</h1>
+                <p>CODE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+let person = {name: 'John Smith'};
+let tpl = `My name is ${person.name}.`;
+
+console.log(tpl);
+
+                </code></pre>
+                <p>CONSOLE</p>
+                <pre><code class="javascript" data-trim contenteditable>
+My name is John Smith.
+                </code></pre>
+            </section>
+
+            <section>
                 <h1>ECMAScript 6 Features</h1>
                 <p>how browsers support ES6?</p>
                 <p><a href="http://kangax.github.io/compat-table/es6/">http://kangax.github.io/compat-table/es6/</a></p>
