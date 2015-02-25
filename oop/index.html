@@ -1,100 +1,112 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-		<title>OOP in javascript</title>
+    <title>OOP in javascript</title>
 
-		<meta name="description" content="Objektinis programavimas">
-		<meta name="author" content="Ramūnas Kiupelis">
+    <meta name="description" content="Objektinis programavimas">
+    <meta name="author" content="Ramūnas Kiupelis">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../revealjs/css/reveal.min.css">
-		<link rel="stylesheet" href="../revealjs/css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="../revealjs/css/reveal.min.css">
+    <link rel="stylesheet" href="../revealjs/css/theme/default.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="../revealjs/lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../revealjs/lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = '../revealjs/css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../revealjs/css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="../revealjs/lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="../revealjs/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
 
-    <body>
-        <div class="overlay" >
-            <div class="overlay-icon"></div>
-            <div class="overlay-line"></div>
-        </div>
+<body>
+<div class="overlay">
+    <div class="overlay-icon"></div>
+    <div class="overlay-line"></div>
+</div>
 
-        <div class="reveal">
+<div class="reveal">
 
-            <!-- Any section element inside of this container is displayed as a slide -->
-            <div class="slides">
-                <section>
-                    <h1>OOP in javascript</h1>
-                    <p>
-                        <small>Ramūnas Kiupelis</small>
-                    </p>
-                </section>
-                <section>
-                    <h2>Turinys</h2>
-                    <ul>
-                        <li>Kas yra objetas</li>
-                        <li>Objektų kūrimas</li>
-                        <li>Paveldėjimas</li>
-                        <li>Javascript modeliai (MVC, observer, singleton)</li>
-                        <li>Įdomu</li>
-                    </ul>
-                    <aside class="notes">
-                        Daugiau apie design patterns http://addyosmani.com/resources/essentialjsdesignpatterns/book
-                    </aside>
-                </section>
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h1>OOP</h1>
 
-                <section>
-                    <section>
-                        <h2>Kas yra objetas</h2>
-                    </section>
-                    <section>
-                        <h2>Kurie yra objetai?</h2>
-                        <ul>
-                            <li class="fragment highlight-red">function objektas () {}</li>
-                            <li class="fragment highlight-green">var obj = new objektas();</li>
-                            <li class="fragment highlight-green">var obj = {};</li>
-                            <li class="fragment highlight-green">var obj = new Array();</li>
-                            <li class="fragment highlight-green">var obj = [];</li>
-                            <li class="fragment highlight-green">var obj = new Number();</li>
-                            <li class="fragment highlight-red">var obj = 10;</li>
-                            <li class="fragment highlight-red">var obj = "tekstas";</li>
-                            <li class="fragment highlight-red">var obj = false;</li>
-                            <li class="fragment highlight-green">var obj = new Boolean(false);</li>
-                        </ul>
+            <h3>in javascript</h3>
 
-                        <aside class="notes">
-                            Kur yra objektai, kur duomenų tipai?
-                        </aside>
-                    </section>
-                    <section>
-                        <h2>Kas yra objetas</h2>
-                        <p>
-                            Objektas tai - netvarkingas sąrašas primityviu duomenų tipų (kartais nuoroda į duomenų tipą), kurie yra saugomi kaip vardas-reikšmė. Kiekvienas objekto elementas vadinamas įpatybe (property), o funkcijos vadinamos metodais.
-                        </p>
-                        <pre><code class="javascript" data-trim contenteditable>
+            <p>
+                <small>Ramūnas Kiupelis</small>
+            </p>
+        </section>
+        <section>
+            <h2>Agenda</h2>
+            <ul>
+                <li>What is object?</li>
+                <li>How to create object?</li>
+                <li>Inheritance</li>
+                <li>Javascript models (MVC, observer, singleton)</li>
+                <li>RequireJS</li>
+
+            </ul>
+        </section>
+
+        <section>
+            <section>
+                <h2>Untrusted</h2>
+                <a href="http://alexnisnevich.github.io/untrusted/" target="_blank"><img src="img/games/untrusted.png"
+                                                                                         height="300"/></a>
+            </section>
+            <section>
+                <h2>JS Dares</h2>
+                <a href="http://www.jsdares.com/" target="_blank"><img src="img/games/js_dares.png"/></a>
+            </section>
+            <section>
+                <h2>Code Combat</h2>
+                <a href="http://codecombat.com/play" target="_blank"><img src="img/games/code_combat.png" height="400"/></a>
+            </section>
+        </section>
+        <section>
+
+            <section>
+                <h2>What is object?</h2>
+            </section>
+            <section>
+                <h2>Which elements are objects?</h2>
+                <ul>
+                    <li class="fragment highlight-red">function nameOf () {}</li>
+                    <li class="fragment highlight-green">var obj = new nameOf();</li>
+                    <li class="fragment highlight-green">var obj = {};</li>
+                    <li class="fragment highlight-green">var obj = new Array();</li>
+                    <li class="fragment highlight-green">var obj = [];</li>
+                </ul>
+                <ul>
+                    <li class="fragment highlight-green">var obj = new Number();</li>
+                    <li class="fragment highlight-red">var obj = 10;</li>
+                    <li class="fragment highlight-red">var obj = "object";</li>
+                    <li class="fragment highlight-red">var obj = false;</li>
+                    <li class="fragment highlight-green">var obj = new Boolean(false);</li>
+                </ul>
+            </section>
+            <section>
+                <h2>What is object?</h2>
+                <pre><code class="javascript" data-trim contenteditable>
 // Consider this simple object:
 var myFirstObject = {
     firstName: "Richard",
@@ -104,25 +116,31 @@ var myFirstObject = {
         console.log("Hmm Hmm Good");
     }
 };
-                        </code></pre>
-                    </section>
-                </section>
+                </code></pre>
+                <aside class="notes">
+                    Objektas tai - netvarkingas sąrašas primityviu duomenų tipų (kartais nuoroda į duomenų tipą), kurie
+                    yra saugomi kaip vardas-reikšmė. Kiekvienas objekto elementas vadinamas įpatybe (property), o
+                    funkcijos vadinamos metodais.
+                </aside>
+            </section>
+        </section>
 
-                <!-- Example of nested vertical slides -->
-                <section>
-                    <section>
-                        <h2>Objektų kūrimas</h2>
-                    </section>
+        <!-- Example of nested vertical slides -->
+        <section>
+            <section>
+                <h2>Creating objects</h2>
+            </section>
 
-                    <section>
-                        <ul>
-                            <li>Object Literals</li>
-                            <li>Object Constructor</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Object Literals</h2>
-                        <pre><code class="javascript" data-trim contenteditable>// This is an empty object initialized using the object literal notation
+            <section>
+                <h2>Creating objects</h2>
+                <ul>
+                    <li>Object Literals</li>
+                    <li>Object Constructor</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Object Literals</h2>
+                <pre><code class="javascript" data-trim contenteditable>// This is an empty object initialized using the object literal notation
 var myBooks = {};
 
 // This is an object with 4 items, again using object literal
@@ -135,10 +153,10 @@ var mango = {
         console.log("Hmm Hmm Good");
     }
 }</code></pre>
-                    </section>
-                    <section>
-                        <h2>Object Constructor</h2>
-                        <pre><code class="javascript" data-trim contenteditable>var mango =  new Object ();
+            </section>
+            <section>
+                <h2>Object Constructor</h2>
+                <pre><code class="javascript" data-trim contenteditable>var mango =  new Object ();
 mango.color = "yellow";
 mango.shape= "round";
 mango.sweetness = 8;
@@ -147,23 +165,25 @@ mango.howSweetAmI = function () {
     console.log("Hmm Hmm Good");
 }
 </code></pre>
-                        <aside class="notes">
-                            http://jsperf.com/object-constructor-vs-obj-literal/2
-                            Objektų kūrimas labai priklauso nuo naršyklės versijos su kiekviena versija vis kitaip (greičiau su literals, arba su object Constructor), tad reiktu pasižiūrėti kuris metodas greitesnis ar patogesnis.
-                            Objektą gali sudaryti ir kiti duomenų tipai, skaičiai, masyvai ir kiti objektai.
-                        </aside>
-                    </section>
+                <aside class="notes">
+                    http://jsperf.com/object-constructor-vs-obj-literal/2
+                    Objektų kūrimas labai priklauso nuo naršyklės versijos su kiekviena versija vis kitaip (greičiau su
+                    literals, arba su object Constructor), tad reiktu pasižiūrėti kuris metodas greitesnis ar
+                    patogesnis.
+                    Objektą gali sudaryti ir kiti duomenų tipai, skaičiai, masyvai ir kiti objektai.
+                </aside>
+            </section>
 
-                    <section>
-                        <h2>Praktiniai modeliai kuriant objektus</h2>
-                        <ul>
-                            <li>Constructor modelis</li>
-                            <li>Prototype modelis</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Constructor modelis</h2>
-                        <pre><code class="javascript" data-trim contenteditable>
+            <section>
+                <h2>Practical models creating objects</h2>
+                <ul>
+                    <li>Constructor model</li>
+                    <li>Prototype model</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Constructor model</h2>
+                <pre><code class="javascript" data-trim contenteditable>
 function Fruit (theColor, theSweetness, theFruitName, theNativeToLand) {
     this.color = theColor;
     this.sweetness = theSweetness;
@@ -181,10 +201,10 @@ function Fruit (theColor, theSweetness, theFruitName, theNativeToLand) {
     }
 }
 </code></pre>
-                    </section>
-                    <section>
-                        <h2>Prototype modelis</h2>
-                        <pre><code class="javascript" data-trim contenteditable>
+            </section>
+            <section>
+                <h2>Prototype model</h2>
+                <pre><code class="javascript" data-trim contenteditable>
 function Fruit () {}
 
 Fruit.prototype.color = "Yellow";
@@ -200,10 +220,12 @@ Fruit.prototype.nativeTo = function () {
     console.log("Grown in:" + this.nativeToLand);
 }
 </code></pre>
-                    </section>
-                    <section>
-                        <h2>Pastaba: <small>prototype</small></h2>
-                        <pre><code class="javascript" data-trim contenteditable>
+            </section>
+            <section>
+                <h2>Note:
+                    <small>prototype</small>
+                </h2>
+                <pre><code class="javascript" data-trim contenteditable>
 // Prototype Attribute of Objects Created With a Constructor Function
 var Account = function () {};
 var userAccount = new Account ();
@@ -211,64 +233,38 @@ var userAccount = new Account ();
 // constructor and as such its prototype attribute (or prototype object)
 // is Account.prototype.
 </code></pre>
-                    </section>
+            </section>
+        </section>
 
-                    <section>
-                        <h2>Encapsulation</h2>
-                        <p></p>
-                        <pre><code class="javascript" data-trim contenteditable>
-function User (theName, theEmail) {
-    this.name = theName;
-    this.email = theEmail;
-    this.quizScores = [];
-    this.currentScore = 0;
-}</code></pre>
-                        <pre><code class="javascript" data-trim contenteditable>
-//Implementation of Combination Constructor/Prototype Pattern
-User.prototype = {
-    constructor: User,
-    saveScore:function (theScoreToAdd)  {
-        this.quizScores.push(theScoreToAdd)
-    },
-    showNameAndScores:function ()  {
-        var scores = this.quizScores.length > 0 ?
-                    this.quizScores.join(",") : "No Scores Yet";
-        return this.name + " Scores: " + scores;
-    },
-    changeEmail:function (newEmail)  {
-        this.email = newEmail;
-        return "New Email Saved: " + this.email;
-    }
-}</code></pre>
+        <section>
+            <section>
+                <h2>Inheritance</h2>
+            </section>
 
-                    </section>
-                    <section>
-<pre><code class="javascript" data-trim contenteditable>
-User.prototype.saveScore = function (theScoreToAdd)  {
-    this.quizScores.push(theScoreToAdd)
-};
-
-User.prototype.showNameAndScores = function ()  {
-    var scores = this.quizScores.length > 0 ? this.quizScores.join(",") : "No Scores Yet";
-    return this.name + " Scores: " + scores;
-};
-
-User.prototype.changeEmail =  function (newEmail)  {
-    this.email = newEmail;
-    return "New Email Saved: " + this.email;
+            <section>
+                <h2>Simple inheritance</h2>
+                <img src="img/inheritance.png"/>
+            </section>
+            <section>
+                <h2>Simple inheritance code</h2>
+                <pre><code class="javascript" data-trim contenteditable>
+function Mammal(name) {
+    this.name = name;
 }
-</code></pre>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Paveldėjimas</h2>
-                    </section>
 
-                    <section>
+function Cat(name) {
+    this.name = name;
+}
 
-                        <h2>Paveldėjimas</h2>
-                        <pre><code class="javascript" data-trim contenteditable>
+Cat.prototype = new Mammal();
+Cat.prototype.constructor = Cat;
+
+                        </code>
+                    </pre>
+            </section>
+            <section>
+                <h2>Advanced inheritance</h2>
+                <pre><code class="javascript" data-trim contenteditable>
 if (typeof Object.create !== 'function') {// Crockford’s method
     Object.create = function (o) {
         function F() {}
@@ -276,8 +272,8 @@ if (typeof Object.create !== 'function') {// Crockford’s method
         return new F();
     };
 }
-                        </code></pre>
-                        <pre><code class="javascript" data-trim contenteditable>
+                </code></pre>
+                <pre><code class="javascript" data-trim contenteditable>
 function inheritPrototype(childObject, parentObject) {
     // copy the properties and methods from the parentObject onto the childObject
     // So the copyOfParent object now has everything the parentObject has
@@ -291,225 +287,119 @@ function inheritPrototype(childObject, parentObject) {
     // from copyOfParent (from parentObject)ka rei
     childObject.prototype = copyOfParent;
 }
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h2>Pavyzdys</h2>
-                        <pre><code class="javascript" data-trim contenteditable>
-// The Question function is the parent for all other question objects;
-// All question objects will inherit from this Question constructor
-function Question(theQuestion, theChoices, theCorrectAnswer) {
-    // Initialize the instance properties
-    this.question = theQuestion;
-    this.choices = theChoices;
-    this.correctAnswer = theCorrectAnswer;
-    this.userAnswer = "";
+                </code></pre>
+            </section>
+        </section>
 
-    // private properties: these cannot be changed by instances
-    var newDate = new Date(),
-        // Constant variable: available to all instances through the instance method below. This is also a private property.
-        QUIZ_CREATED_DATE = newDate.toLocaleDateString();
-
-    // This is the only way to access the private QUIZ_CREATED_DATE variable
-    // This is an example of a privilege method: it can access private properties and it can be called publicly
-    this.getQuizDate = function () {
-        return QUIZ_CREATED_DATE;
-    };
-
-    // A confirmation message that the question was created
-    console.log("Quiz Created On: " + this.getQuizDate());
-
-}
-
-// Define the prototype methods that will be inherited
-Question.prototype.getCorrectAnswer = function () {
-    return  this.correctAnswer;
-};
-
-Question.prototype.getUserAnswer = function () {
-    return this.userAnswer;
-};
-
-Question.prototype.displayQuestion = function () {
-    var questionToDisplay = "<div class='question'>" + this.question + "</div><ul>";
-    choiceCounter = 0;
-    this.choices.forEach(function (eachChoice)  {
-        questionToDisplay += '<li><input type="radio" name="choice" value="' + choiceCounter + '">' + eachChoice + '</li>';
-        choiceCounter++;
-    });
-    questionToDisplay += "</ul>";
-
-    console.log (questionToDisplay);
-};
-
-// Create the MultipleChoiceQuestion
-function MultipleChoiceQuestion(theQuestion, theChoices, theCorrectAnswer){
-// For MultipleChoiceQuestion to properly inherit from Question, here inside the MultipleChoiceQuestion constructor, we have to explicitly call the Question constructor
-// passing MultipleChoiceQuestion as the this object, and the parameters we want to use in the Question constructor:
-    Question.call(this, theQuestion, theChoices, theCorrectAnswer);
-};
-// inherit the methods and properties from Question
-inheritPrototype(MultipleChoiceQuestion, Question);
-
-// Create the DragDropQuestion
-function DragDropQuestion(theQuestion, theChoices, theCorrectAnswer) {
-    Question.call(this, theQuestion, theChoices, theCorrectAnswer);
-}
-
-// inherit the methods and properties from Question
-inheritPrototype(DragDropQuestion, Question);
-
-// Override the displayQuestion method it inherited
-DragDropQuestion.prototype.displayQuestion = function () {
-    // Just return the question. Drag and Drop implementation detail is beyond this article
-    console.log(this.question);
-};
-
-// Initialize some questions and add them to an array
-var allQuestions = [
-    new MultipleChoiceQuestion("Who is Prime Minister of England?", ["Obama", "Blair", "Brown", "Cameron"], 3),
-
-    new MultipleChoiceQuestion("What is the Capital of Brazil?", ["São Paulo", "Rio de Janeiro", "Brasília"], 2),
-
-    new DragDropQuestion("Drag the correct City to the world map.", ["Washington, DC", "Rio de Janeiro", "Stockholm"], 0)
-];
-
-// Display all the questions
-allQuestions.forEach(function (eachQuestion)  {
-    eachQuestion.displayQuestion();
-});
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h2>Užduotis:</h2>
-                        <p>Panaudojant paveldėjimo funkcija "inheritPrototype", sukurkite klase Manager kuri paveldi Account.</p>
-                        <pre class="fragment"><code class="javascript">
-function Account (userName, name, lastName) {
-    this.userName = userName;
-    this.name = name;
-    this.lastName = name;
-};
-Account.prototype.getUserName = function () { return this.userName; };
-                        </code></pre>
-                        <p class="fragment">Atsakymas:</p>
-                        <pre class="fragment"><code class="javascript">
-function Manager(username, name, lastName) {
-    Account.call(this, username, name, lastName);
-}
-// inherit the methods and properties from Account
-inheritPrototype(Manager, Account);
-                        </code></pre>
-                    </section>
-                </section>
-
-
-                <section>
-                    <section>
-                        <h2>Javascript modeliai (MVC, observer, singleton)</h2>
-                    </section>
-                    <section>
-                        <h2>MVC</h2>
-                        <img src="img/mvc.png">
-                    </section>
-                    <section>
-                        <h2>View</h2>
+        <section>
+            <section>
+                <h2>Javascript models (MVC, observer, singleton)</h2>
+            </section>
+            <section>
+                <h2>MVC</h2>
+                <img src="img/mvc.png">
+            </section>
+            <section>
+                <h2>View</h2>
+                <ul>
+                    <li>Responsibilities
                         <ul>
-                            <li>Atsako už:
-                                <ul>
-                                    <li>HTML manipuliacija</li>
-                                    <li>HTML generavimas iš šablonu</li>
-                                    <li>Išsiusti atlikta veiksmą klaudytojams</li>
-                                    <li>Nieko daugiau!</li>
-                                </ul>
-                            </li>
-                            <li>Sąsaja su:
-                                <ul>
-                                    <li>Controller</li>
-                                </ul>
-                            </li>
+                            <li>Manipulate html</li>
+                            <li>Generate HTML from templates</li>
+                            <li>Dispatch events to listeners</li>
+                            <li>Nothing more!</li>
                         </ul>
-                        <img src="img/mvc-v.png">
-                    </section>
-                    <section>
-                        <h2>Controller</h2>
+                    </li>
+                    <li>References
                         <ul>
-                            <li>Atsako už:
-                                <ul>
-                                    <li>Suvaldo visus įvykius iš view</li>
-                                    <li>Ištraukia duomenis iš modelio</li>
-                                    <li>Kovertuoja įvykius į komandas</li>
-                                    <li>Repaint strategija</li>
-                                    <li>Klaidų valdymo strategija</li>
-                                </ul>
-                            </li>
-                            <li>Sąsaja su:
-                                <ul>
-                                    <li>Modeliu (vykdyti komandas CRUD)</li>
-                                    <li>View (vygdyti repaint)</li>
-                                </ul>
-                            </li>
+                            <li>A set of event listeners (typically the controller)</li>
                         </ul>
-                        <img src="img/mvc-c.png">
-                    </section>
-                    <section>
-                        <h2>Model</h2>
+                    </li>
+                </ul>
+                <img src="img/mvc-v.png">
+            </section>
+            <section>
+                <h2>Controller</h2>
+                <ul>
+                    <li>Responsibilities
                         <ul>
-                            <li>Atsako už:
-                                <ul>
-                                    <li>Duomenų kešavimą minimizuojant užklausas</li>
-                                    <li>Pateikia modelio duomenis</li>
-                                </ul>
-                            </li>
-                            <li>Sąsaja su:
-                                <ul>
-                                    <li>Proxy servisu</li>
-                                </ul>
-                            </li>
+                            <li>Handle all events from the view model view </li>
+                            <li>Poll model for change events if relevant svc</li>
+                            <li>Convert events to commands against the model</li>
+                            <li>Repaint strategy </li>
+                            <li>Error handling strategy</li>
                         </ul>
-                        <img src="img/mvc-m.png">
-                    </section>
-                    <section>
-                        <h2>SVC</h2>
+                    </li>
+                    <li>References
                         <ul>
-                            <li>Atsako už:
-                                <ul>
-                                    <li>Javascrit API sasaja su server API</li>
-                                </ul>
-                            </li>
-                            <li>Sąsaja su:
-                                <ul>
-                                    <li>Duomenu traukimas per AJAX</li>
-                                </ul>
-                            </li>
+                            <li>The model (to execute commands, polling)</li>
+                            <li>The view (to do repainting)</li>
                         </ul>
-                        <img src="img/mvc-s.png">
-                    </section>
-                    <section>
-                        <h2>Singleton pattern</h2>
+                    </li>
+                </ul>
+                <img src="img/mvc-c.png">
+            </section>
+            <section>
+                <h2>Model</h2>
+                <ul>
+                    <li>Responsibilities
                         <ul>
-                            <li>Privalumai
-                                <ul>
-                                    <li>Atminties sumažinimas</li>
-                                    <li>Vienas prieigos taškas</li>
-                                    <li>Uždelsta inicializacija, kuriamas objektas tada kai reikia</li>
-                                </ul>
-                            </li>
-                            <li>Trūkumai
-                                <ul>
-                                    <li>Sunkiau testuoti, kartais turi pasleptas priklausomybes</li>
-                                    <li>Saugo savo būsena, visame programos gyvenimo cikle</li>
-                                </ul>
-                            </li>
+                            <li>Cache state to minimize round view model trips </li>
+                            <li>Provide view and controller with a useful interface of the svc data model</li>
                         </ul>
-                        <aside class="notes">
-                            https://carldanley.com/js-singleton-pattern/
-                        </aside>
-                    </section>
-                    <section>
-                        <img src="img/singleton2.jpg" alt="" />
-                    </section>
-                    <section>
-                        <h2>Singleton pattern (geras)</h2>
+                    </li>
+                    <li>References
+                        <ul>
+                            <li>The service proxy</li>
+                        </ul>
+                    </li>
+                </ul>
+                <img src="img/mvc-m.png">
+            </section>
+            <section>
+                <h2>SVC</h2>
+                <ul>
+                    <li>Responsibilities
+                        <ul>
+                            <li>Provide a javascript api view model mapping of the server api</li>
+                        </ul>
+                    </li>
+                    <li>References
+                        <ul>
+                            <li>The physical server via ajax</li>
+                        </ul>
+                    </li>
+                </ul>
+                <img src="img/mvc-s.png">
+            </section>
+
+            <section>
+                <h2>Singleton pattern</h2>
+                <ul>
+                    <li>Advantages
+                        <ul>
+                            <li>Reduced memory footprint</li>
+                            <li>Single point of access</li>
+                            <li>Delayed initialization that prevents instantiation until required</li>
+                        </ul>
+                    </li>
+
+                    <li>Disadvantages
+                        <ul>
+                            <li>Once instantiated, they're hardly ever "reset"</li>
+                            <li>Harder to unit test and sometimes introduces hidden dependencies</li>
+                        </ul>
+                    </li>
+                </ul>
+                <aside class="notes">
+                    https://carldanley.com/js-singleton-pattern/
+                </aside>
+            </section>
+            <section>
+                <img src="img/singleton2.jpg" alt=""/>
+            </section>
+            <section>
+                <h2>Singleton pattern</h2>
                         <pre style="max-height:600px"><code class="javascript" style="max-height:600px">
 var mySingleton = (function () {
     // Instance stores a reference to the Singleton
@@ -528,141 +418,210 @@ var mySingleton = (function () {
     };
 })();
                         </code></pre>
-                    </section>
-                    <section>
-                        <h2>Singleton pattern (blogas)</h2>
-                        <pre style="max-height:600px"><code class="javascript" style="max-height:600px">
-var myBadSingleton = (function () {
-    // Instance stores a reference to the Singleton
-    var instance;
-    function init() { ... };
-
-    return {
-        // Always create a new Singleton instance
-        getInstance: function () {
-            instance = init();
-            return instance;
-        }
-    };
-})();
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h2>Observer Pattern</h2>
+            </section>
+            <section>
+                <h2>Observer Pattern</h2>
+                <ul>
+                    <li>Advantages
                         <ul>
-                            <li>Privalumai
-                                <ul>
-                                    <li>Reikalauja gilesnio mąstymo tarp komponentų</li>
-                                    <li>Padeda apibrėžti priklausomybes</li>
-                                    <li>Apriboja objektus, objetai lieka maži, daugiau perpanaudojami komponentai</li>
-                                </ul>
-                            </li>
-                            <li>Trūkumai
-                                <ul>
-                                    <li>Sunkesnė kodo analizė</li>
-                                    <li>Kodo keitimas gali buti sudetingas</li>
-                                </ul>
-                            </li>
+                            <li>Requires deeper-level thinking of the relationship between the various components of an application</li>
+                            <li>Helps us pinpoint dependencies</li>
+                            <li>Excellent at decoupling objects which often promotes smaller, reusable components</li>
                         </ul>
-                        <aside class="notes">
-                            https://carldanley.com/js-observer-pattern/
-                        </aside>
-                    </section>
-                    <section>
-                        <img src="img/observer_pattern.jpg" alt="" />
-                    </section>
-                </section>
+                    </li>
+                    <li>Disadvantages
+                        <ul>
+                            <li>Checking the integrity of your application can become difficult</li>
+                            <li>Switching a subscriber from one publisher to another can be costly</li>
+                        </ul>
+                    </li>
+                </ul>
+                <aside class="notes">
+                    https://carldanley.com/js-observer-pattern/
+                </aside>
+            </section>
+            <section>
+                <img src="img/observer_pattern.jpg" alt=""/>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>RequireJS & AMD</h2>
+                <small>Asynchronous Module Definition</small>
+                <aside class="notes">
+                    https://www.devbridge.com/articles/understanding-amd-requirejs/
+                    http://www.sitepoint.com/understanding-requirejs-for-effective-javascript-module-loading/
+                </aside>
+            </section>
+            <section>
+                <h2>Advantages</h2>
+                <ul>
+                    <li>Asynchronous by nature</li>
+                    <li>Dependencies are easy to identify</li>
+                    <li>Avoids global variables</li>
+                    <li>Can be lazy loaded if needed</li>
+                    <li>Easily portable</li>
+                </ul>
+            </section>
+            <section>
+                <h2>On top of that</h2>
+                <ul>
+                    <li>Can load more than JavaScript files</li>
+                    <li>Powerful plugin support</li>
+                    <li>Support script fallbacks (OMG, CDN is down!)</li>
+                    <li>Can be easily configured</li>
+                    <li>Can load multiple versions of the same library</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Example</h2>
+                <p>purchase.js</p>
+                <pre style="max-height:600px"><code class="javascript" style="max-height:600px">
+function purchaseProduct(){
+  console.log("Function : purchaseProduct");
 
-                <section>
-                    <section>
-                        <h2>Įdomu</h2>
-                    </section>
-                    <section>
-                        <h2>Pasitaikančios klaidos</h2>
-                        <pre class="fragment"><code class="javascript">
-function badTest(el) { el.push(11); return el; }
-var ar1 =  [5], var obj = { tt : [10] };
-var ar2 = badTest(obj.tt), ar3 = badTest(arr);
-console.log(obj, ar1,ar2, ar3);
-</code></pre>
-                        <p class="fragment">Sprendimas</p>
-                        <pre class="fragment"><code class="javascript">
-function test(el) {
-    var test = el.slice();
-	test.push(11);
-	return test;
+  var credits = getCredits();
+  if(credits > 0){
+    reserveProduct();
+    return true;
+  }
+  return false;
 }
-var ar1 =  [5], var obj = { tt : [10] };
-var ar2 = test(obj.tt), ar3 = test(arr);
-console.log(obj, ar1, ar2, ar3);
-</code></pre>
-                    </section>
-                    <section>
-                        <h2>Interactive javascript</h2>
-                        <ul>
-                            <li><a href="http://alexnisnevich.github.io/untrusted">Untrusted</a></li>
-                            <li><a href="http://www.jsdares.com/dare">JS Dares</a></li>
-                            <li><a href="http://www.codeavengers.com/javascript/">Intro to Game Development</a></li>
-                            <li><a href="http://codecombat.com/">Code combat</a></li>
-                            <li><a href="http://www.codecademy.com/en/tracks/javascript">Code academy</a></li>
-                        </ul>
-                    </section>
-                </section>
-                <section>
-                    <h3>Klausimai?</h3>
-                </section>
-                <section>
-                    <section>
-                        <h3>Ačiū už dėmesį</h3>
-                    </section>
-                    <section>
-                        <h2>Literatūra</h2>
-                        <ul>
-                            <li><a href="http://shichuan.github.io/javascript-patterns/">JS Patterns</a></li>
-                            <li><a href="http://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/">OOP In JavaScript: What You NEED to Know</a></li>
-                            <li><a href="http://code.tutsplus.com/tutorials/understanding-design-patterns-in-javascript--net-25930">Understanding Design Patterns in JavaScript</a></li>
-                            <li><a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book">Learning JavaScript Design Patterns</a></li>
-                            <li><a href="http://www.slideshare.net/larsthorup/unit-testing-in-javascript-with-mvc-and-qunit">Unit Testing in JavaScript with MVC and QUnit</a></li>
-                        </ul>
-                    </section>
-                </section>
+                </code></pre>
+            </section>
+            <section>
+                <h2>Example</h2>
+                <p>products.js</p>
+                <pre><code class="javascript">
+function reserveProduct(){
+  console.log("Function : reserveProduct");
 
-            </div>
+  return true;
+}
+                </code></pre>
+                <p>credits.js</p>
+                <pre><code class="javascript">
+function getCredits(){
+  console.log("Function : getCredits");
 
-        </div>
+  var credits = "100";
+  return credits;
+}
+                </code></pre>
+            </section>
+            <section>
+                <h2>Example in require js</h2>
+                <p>purchase.js</p>
+                <pre><code class="javascript">
+define(["credits","products"], function(credits,products) {
+  console.log("Function : purchaseProduct");
+  return {
+    purchaseProduct: function() {
 
-        <script src="../revealjs/lib/js/head.min.js"></script>
-		<script src="../revealjs/js/reveal.min.js"></script>
+      var credit = credits.getCredits();
+      if(credit > 0){
+        products.reserveProduct();
+        return true;
+      }
+      return false;
+    }
+  }
+});
+                </code></pre>
+            </section>
+            <section>
+                <h2>Example in require js</h2>
+                <p>products.js</p>
+                <pre><code class="javascript">
+define(function(products) {
+  return {
+    reserveProduct: function() {
+      console.log("Function : reserveProduct");
 
-		<script>
+      return true;
+    }
+  }
+});
+                </code></pre>
+                <p>credits.js</p>
+                <pre><code class="javascript">
+define(function() {
+  console.log("Function : getCredits");
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+  return {
+    getCredits: function() {
+      var credits = "100";
+      return credits;
+    }
+  }
+});
+                </code></pre>
+            </section>
+        </section>
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        <section>
+            <img src="img/questions.png" alt="" style="height:600px;border: none;box-shadow: none"/>
+        </section>
+    </div>
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+</div>
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: '../revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '../revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+<script src="../revealjs/lib/js/head.min.js"></script>
+<script src="../revealjs/js/reveal.min.js"></script>
 
-		</script>
+<script>
 
-    </body>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: '../revealjs/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: '../revealjs/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../revealjs/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: '../revealjs/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: '../revealjs/plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: '../revealjs/plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+
+</script>
+
+</body>
 </html>
