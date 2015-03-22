@@ -1,0 +1,153 @@
+#!/bin/bash
+
+set -u
+umask 0
+
+bindir=`dirname $0`
+hier=`cd $bindir/.. && pwd`
+logdir=`cd $hier/log && pwd -P`
+pidfile=${logdir}/server.pid
+shutdown=${logdir}/SHUTDOWN
+
+server_pid()
+{
+  test -s $pidfile && cat $pidfile
+}
+
+launch_daemon()
+{
+  _java=`which java`
+  if [ ! -x "$_java" ]; then
+    echo "Could not find java executable"
+    exit 1
+  fi
+
+  export DAEMON_CMD="$_java -Xmx3g -XX:+HeapDumpOnOutOfMemoryError -Dnetworkaddress.cache.ttl=0 -Dnetworkaddress.cache.negative.ttl=0 -jar $hier/bin/studapp.jar start"
+  export DAEMON_PID=$pidfile
+  export DAEMON_LOG=$logdir/console.log
+  export SHUTDOWN_FLAG=$shutdown
+
+  nohup $hier/bin/daemon-loop.sh STUDAPP < /dev/null >> $DAEMON_LOG 2>&1 &
+
+  # make sure daemon came up
+  _pid=
+  _count=0
+  _started=false
+  while [ $_count -lt 10 ]; do
+    echo "Waiting for startup ..."
+    _pid=`server_pid`
+    if [ -n "$_pid" ]; then
+      if kill -0 $_pid 2>/dev/null; then
+        echo "startup ok, pid $_pid"
+        _started=true
+        break
+      fi
+    fi
+    _count=`expr $_count + 1`
+    sleep 1
+  done
+
+  # did it start?
+  if [ $_started = false ]; then
+    echo "*** STUDAPP startup FAILED. Last few lines of $DAEMON_LOG: " >&2
+    test -f $DAEMON_LOG && tail -15 $DAEMON_LOG
+    exit 1
+  fi
+
+  # seems okay
+  echo "log files are"
+  echo "   application log:   $logdir/server.log"
+  echo "   daemon stdout:     $DAEMON_LOG"
+  echo "   pidfile            $DAEMON_PID"
+}
+
+wait_for_pid()
+{
+  _delay=1
+  _pid=$1
+
+  if [ -n "$_pid" ]; then
+    while [ kill -0 $_pid 2>/dev/null ]; do
+      sleep $_delay
+    done
+  fi
+}
+
+start()
+{
+  _pid=`server_pid`
+  if [ -z "$_pid" ]; then
+    launch_daemon
+    exit 0
+  else
+    echo "Server already running."
+    exit 1
+  fi
+}
+
+clean()
+{
+ echo "cleaning...."
+ rm $logdir/console.log
+ rm $logdir/server.pid
+ echo "done"
+}
+
+stop()
+{
+  _pid=`server_pid`
+  if [ -z "$_pid" ]; then
+    echo "Server not running."
+  else
+    touch $shutdown
+    kill $_pid 2>/dev/null
+    wait_for_pid $_pid
+  fi
+}
+
+check_running()
+{
+  _pid=`server_pid`
+  if [ -n "$_pid" ]; then
+    echo "Server already running."
+    exit 1
+  fi
+}
+
+dump_heap()
+{
+  _pid=`server_pid`
+  if [ -z "$_pid" ]; then
+    echo "Server not running."
+  else
+    _file="studapp-heap-`date +%Y%m%d%H%M%S`.hprof"
+    jmap -dump:format=b,file=$_file $_pid
+  fi
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        stop
+        start
+        ;;
+  clean)
+        clean
+        ;;
+  check-running)
+        check_running
+        ;;
+  dump-heap)
+        dump_heap
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart|clean|check-running|dump-heap}"
+        exit 1
+esac
+
+exit 0

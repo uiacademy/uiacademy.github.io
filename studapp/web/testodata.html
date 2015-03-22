@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript" src="js/datajs-1.1.2.js" ></script>
+<script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
+<script type="text/javascript" src="js/q.js" ></script>
+<script type="text/javascript" src="js/breeze.debug.js" ></script>
+<script type="text/javascript">
+
+
+breeze.config.initializeAdapterInstance('dataService', 'webApiOData', true);
+
+// Datacontext
+var serviceName = "http://localhost:8980/HotelOData.svc/";
+var manager = new breeze.EntityManager(serviceName);
+
+
+var query = breeze.EntityQuery.from("Brands").where('Longname', 'startsWith', 'S').orderBy('Longname desc');
+// var query = breeze.EntityQuery.from("Brands")
+// 							      .where('Longname', 'endsWith', 's')
+// 							      .orderBy('Longname desc');
+
+// var query = breeze.EntityQuery.from("Citys").where('Nearbyhotelcount', '>', '450' );
+// var query = breeze.EntityQuery.from("Citys").where('Name', '==', 'Kaunas' );
+
+// var query = breeze.EntityQuery.from("Countrys"); 
+// var query = breeze.EntityQuery.from("Brands"); 
+
+// var query = breeze.EntityQuery.from("Hotels"); 
+// var query = breeze.EntityQuery.from("HotelReviews");
+							   
+
+manager.executeQuery(query).then(succeeded).fail(failed);
+
+
+function succeeded(data) {
+    var count = data.results.length;
+    console.log("Retrieved " + count);
+    if (!count) {
+        console.log("No results"); return;
+    }
+    data.results.forEach(function (item) {
+        console.log(item);        
+    });
+}
+
+function failed(error) { 
+	console.log(error);
+}
+
+</script>
+</body>
+</html>
