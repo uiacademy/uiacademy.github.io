@@ -11,7 +11,6 @@
 <script type="text/javascript" src="js/breeze.debug.js" ></script>
 <script type="text/javascript">
 
-
 breeze.config.initializeAdapterInstance('dataService', 'webApiOData', true);
 
 // Datacontext
@@ -19,20 +18,20 @@ var serviceName = "http://localhost:8980/HotelOData.svc/";
 var manager = new breeze.EntityManager(serviceName);
 
 
-var query = breeze.EntityQuery.from("Brands").where('Longname', 'startsWith', 'S').orderBy('Longname desc');
+var query = breeze.EntityQuery.from("Brands"); 
+//var query = breeze.EntityQuery.from("Brands").where('Longname', 'startsWith', 'S').orderBy('Longname desc');
 // var query = breeze.EntityQuery.from("Brands")
-// 							      .where('Longname', 'endsWith', 's')
-// 							      .orderBy('Longname desc');
+//                                .where('Longname', 'endsWith', 's')
+//                                .orderBy('Longname desc');
 
-// var query = breeze.EntityQuery.from("Citys").where('Nearbyhotelcount', '>', '450' );
-// var query = breeze.EntityQuery.from("Citys").where('Name', '==', 'Kaunas' );
+// var query = breeze.EntityQuery.from("Cities").where('Nearbyhotelcount', '>', '450' );
+// var query = breeze.EntityQuery.from("Cities").where('Name', '==', 'Kaunas' );
 
-// var query = breeze.EntityQuery.from("Countrys"); 
-// var query = breeze.EntityQuery.from("Brands"); 
+// var query = breeze.EntityQuery.from("Countries"); 
 
-//// var query = breeze.EntityQuery.from("Hotels"); 
-//// var query = breeze.EntityQuery.from("HotelReviews");
-							   
+// var query = breeze.EntityQuery.from("Hotels"); 
+// var query = breeze.EntityQuery.from("HotelReviews").where('Hid', '==', '645016');
+                               
 
 manager.executeQuery(query).then(succeeded).fail(failed);
 
@@ -49,7 +48,7 @@ function succeeded(data) {
 }
 
 function failed(error) { 
-	console.log(error);
+    console.log(error);
 }
 
 </script>
