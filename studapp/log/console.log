@@ -1,17 +1,0 @@
-
-20150321.150430 /home/ui-academy/uiacademy/studapp/bin/daemon-loop.sh START
-20150321.150431 2015-03-21 13:04:31,334 [main] INFO  [Config] Loading properties file from file [/home/ui-academy/uiacademy/studapp/conf/studapp.conf]
-20150321.150431 2015-03-21 13:04:31,364 [main] INFO  [WebServer] Starting web server on :8980, serving from /home/ui-academy/uiacademy/studapp/web
-20150321.150434 2015-03-21 13:04:34,577 [main] INFO  [WebServer] Working directory /home/ui-academy/uiacademy/studapp
-20150321.150434 2015-03-21 13:04:34,633 [main] INFO  [WebServer] Server started
-20150321.150649 [EL Info]: 2015-03-21 13:06:49.736--ServerSession(1701915664)--EclipseLink, version: Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd
-20150321.150650 [EL Info]: connection: 2015-03-21 13:06:50.195--ServerSession(1701915664)--file:/home/ui-academy/uiacademy/studapp/bin/studapp.jar_hotelPersistence login successful
-20150321.152954 2015-03-21 13:29:54,837 [main] INFO  [WebServer] Server stopped
-
-20150321.152955 /home/ui-academy/uiacademy/studapp/bin/daemon-loop.sh START
-20150321.152955 2015-03-21 13:29:55,822 [main] INFO  [Config] Loading properties file from file [/home/ui-academy/uiacademy/studapp/conf/studapp.conf]
-20150321.152955 2015-03-21 13:29:55,834 [main] INFO  [WebServer] Starting web server on :8980, serving from /home/ui-academy/uiacademy/studapp/web
-20150321.152958 2015-03-21 13:29:58,465 [main] INFO  [WebServer] Working directory /home/ui-academy/uiacademy/studapp
-20150321.152958 2015-03-21 13:29:58,516 [main] INFO  [WebServer] Server started
-20150321.153000 [EL Info]: 2015-03-21 13:30:00.374--ServerSession(469374176)--EclipseLink, version: Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd
-20150321.153000 [EL Info]: connection: 2015-03-21 13:30:00.627--ServerSession(469374176)--file:/home/ui-academy/uiacademy/studapp/bin/studapp.jar_hotelPersistence login successful
