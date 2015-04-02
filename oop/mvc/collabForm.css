@@ -1,0 +1,36 @@
+﻿body {
+    font-family: Arial;
+}
+
+#title
+{
+    font-size: x-large;
+    font-weight: bold;
+    color: #007241;
+    background-color: #FF9B73;
+}
+
+#refreshAction
+{
+    visibility: hidden;
+}
+
+.locked input
+{
+    background-color: #CCC;
+}
+
+.unlocked .editAction
+{
+    background-color: #CCC;
+}
+
+.locked .saveAction
+{
+    background-color: #CCC;
+}
+
+.locked .cancelAction
+{
+    background-color: #CCC;
+}

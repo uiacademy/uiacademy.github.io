@@ -1,0 +1,56 @@
+﻿
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CollabForm</title>
+    <link id="stylesheet" rel="stylesheet" href="collabForm.css"/>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="collabForm.js"></script>
+    <script type="text/javascript" src="svc.js"></script>
+    <script type="text/javascript" src="model.js"></script>
+    <script type="text/javascript" src="view.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+
+    <script type="application/javascript">
+        $(document).ready(function () {
+            var fields = [{
+                    questionId: 1,
+                    label: "Benefits",
+                    value: "",
+                    unlockedByMe: false,
+                    unlockedBy: ""
+                },
+                {
+                    questionId: 2,
+                    label: "Drawbacks",
+                    value: "",
+                    unlockedByMe: false,
+                    unlockedBy: ""
+                }
+            ];
+
+            var config = {
+                title: "Conclusions",
+                foremanId: 47,
+                unlockMessage: "Edited by {0}",
+                fields: fields
+            };
+
+            $.ajax('collabForm.html', {
+                async: false,
+                complete: function (xhr) {
+                    $(document.body).append(xhr.responseText);
+
+                    CollabForm.bootstrap(config);
+                }
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+    <p><a href="test/all.test.html">Link to Tests</a></p>
+</body>
+</html>

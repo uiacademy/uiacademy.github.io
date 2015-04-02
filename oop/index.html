@@ -368,6 +368,10 @@ function namespace(namespaceString) {
     return parent;
 }
                 </code></pre>
+                <pre class="fragment"><code class="javascript">
+var module = namespace("very.long.module.path");
+very.long.module.path === module;
+                </code></pre>
                 <aside class="notes">
                     In many programming languages, namespacing is a technique employed to avoid collisions with other objects or
                     variables in the global namespace. They're also extremely useful for helping organize blocks of functionality
@@ -540,7 +544,10 @@ Manager.prototype.addTask function(task) {
                 </ul>
                 <img src="img/mvc-s.png">
             </section>
-
+            <section>
+                <h2>MVC</h2>
+                <p><a href="mvc/index.html" target="_blank">Demo</a></p>
+            </section>
             <section>
                 <h2>Singleton pattern</h2>
                 <ul>
@@ -610,6 +617,10 @@ var mySingleton = (function () {
             </section>
             <section>
                 <img src="img/observer_pattern.jpg" alt=""/>
+            </section>
+            <section>
+                <h2>Observer Pattern</h2>
+                <p><a href="observer.html" target="_blank">Demo</a></p>
             </section>
         </section>
         <section>
@@ -724,6 +735,10 @@ define(function() {
   }
 });
                 </code></pre>
+            </section>
+            <section>
+                <h2>Require js</h2>
+                <p><a href="require-js/index.html" target="_blank">Demo</a></p>
             </section>
         </section>
 
