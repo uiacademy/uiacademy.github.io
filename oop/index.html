@@ -59,54 +59,42 @@
             <h2>Agenda</h2>
             <ul>
                 <li>What is object?</li>
+                <li>Why to use OOP?</li>
                 <li>How to create object?</li>
+                <li>Encapsulation</li>
                 <li>Inheritance</li>
                 <li>Javascript models (MVC, observer, singleton)</li>
                 <li>RequireJS</li>
-
             </ul>
         </section>
 
         <section>
-            <section>
-                <h2>Untrusted</h2>
-                <a href="http://alexnisnevich.github.io/untrusted/" target="_blank"><img src="img/games/untrusted.png"
-                                                                                         height="300"/></a>
-            </section>
-            <section>
-                <h2>JS Dares</h2>
-                <a href="http://www.jsdares.com/" target="_blank"><img src="img/games/js_dares.png"/></a>
-            </section>
-            <section>
-                <h2>Code Combat</h2>
-                <a href="http://codecombat.com/play" target="_blank"><img src="img/games/code_combat.png" height="400"/></a>
-            </section>
-        </section>
-        <section>
-
             <section>
                 <h2>What is object?</h2>
             </section>
             <section>
                 <h2>Which elements are objects?</h2>
                 <ul>
-                    <li class="fragment highlight-red">function nameOf () {}</li>
-                    <li class="fragment highlight-green">var obj = new nameOf();</li>
-                    <li class="fragment highlight-green">var obj = {};</li>
+                    <li class="fragment highlight-green">var obj = new InitApp();</li>
+                    <li class="fragment highlight-green">var obj = new Object();</li>
                     <li class="fragment highlight-green">var obj = new Array();</li>
-                    <li class="fragment highlight-green">var obj = [];</li>
+                    <li class="fragment highlight-green">var obj = new Number();</li>
+                    <li class="fragment highlight-green">var obj = new Boolean(false);</li>
                 </ul>
                 <ul>
-                    <li class="fragment highlight-green">var obj = new Number();</li>
+                    <li class="fragment highlight-green">var obj = {};</li>
+                    <li class="fragment highlight-green">var obj = [];</li>
+                    <li class="fragment highlight-red">function obj () {}</li>
                     <li class="fragment highlight-red">var obj = 10;</li>
                     <li class="fragment highlight-red">var obj = "object";</li>
                     <li class="fragment highlight-red">var obj = false;</li>
-                    <li class="fragment highlight-green">var obj = new Boolean(false);</li>
                 </ul>
+
+                <pre class="fragment"><code class="javascript">typeof obj === "object"</code></pre>
             </section>
             <section>
                 <h2>What is object?</h2>
-                <pre><code class="javascript" data-trim contenteditable>
+                <pre><code class="javascript">
 // Consider this simple object:
 var myFirstObject = {
     firstName: "Richard",
@@ -116,13 +104,38 @@ var myFirstObject = {
         console.log("Hmm Hmm Good");
     }
 };
+
+// custom function for creating object
+function Person(firstName) {
+    this.firstName = firstName;
+}
+
+var peter = new Person("Peter");
                 </code></pre>
+                <p class="fragment">What happens if we call:</p>
+                <pre class="fragment"><code class="javascript">var peter = Person("peter");</code></pre>
+
                 <aside class="notes">
-                    Objektas tai - netvarkingas sąrašas primityviu duomenų tipų (kartais nuoroda į duomenų tipą), kurie
-                    yra saugomi kaip vardas-reikšmė. Kiekvienas objekto elementas vadinamas įpatybe (property), o
-                    funkcijos vadinamos metodais.
+                    An object is an unordered list of primitive data types (and sometimes reference data types) that is stored as a series of name-value pairs.
+                    Each item in the list is called a property (functions are called methods).
                 </aside>
             </section>
+        </section>
+
+        <section>
+            <h2>Why to use OOP?</h2>
+            <ul>
+                <li>Encapsulation</li>
+                <li>Aggregation</li>
+                <li>Inheritance</li>
+                <li>Polymorphism</li>
+            </ul>
+            <aside class="notes">
+                Encapsulation - Data can be grouped together with functionality that operates on that data. This, quite simply, is the definition of an object.
+                Aggregation - One object can reference another object.
+                Inheritance - A newly created object has the same characteristics as another object without explicitly duplicating its functionality.
+                Polymorphism - One interface may be implemented by multiple objects.
+            </aside>
         </section>
 
         <!-- Example of nested vertical slides -->
@@ -140,7 +153,7 @@ var myFirstObject = {
             </section>
             <section>
                 <h2>Object Literals</h2>
-                <pre><code class="javascript" data-trim contenteditable>// This is an empty object initialized using the object literal notation
+                <pre><code class="javascript">// This is an empty object initialized using the object literal notation
 var myBooks = {};
 
 // This is an object with 4 items, again using object literal
@@ -152,11 +165,12 @@ var mango = {
     howSweetAmI: function () {
         console.log("Hmm Hmm Good");
     }
-}</code></pre>
+}
+                </code></pre>
             </section>
             <section>
                 <h2>Object Constructor</h2>
-                <pre><code class="javascript" data-trim contenteditable>var mango =  new Object ();
+                <pre><code class="javascript">var mango =  new Object ();
 mango.color = "yellow";
 mango.shape= "round";
 mango.sweetness = 8;
@@ -164,13 +178,9 @@ mango.sweetness = 8;
 mango.howSweetAmI = function () {
     console.log("Hmm Hmm Good");
 }
-</code></pre>
+                </code></pre>
                 <aside class="notes">
                     http://jsperf.com/object-constructor-vs-obj-literal/2
-                    Objektų kūrimas labai priklauso nuo naršyklės versijos su kiekviena versija vis kitaip (greičiau su
-                    literals, arba su object Constructor), tad reiktu pasižiūrėti kuris metodas greitesnis ar
-                    patogesnis.
-                    Objektą gali sudaryti ir kiti duomenų tipai, skaičiai, masyvai ir kiti objektai.
                 </aside>
             </section>
 
@@ -183,7 +193,7 @@ mango.howSweetAmI = function () {
             </section>
             <section>
                 <h2>Constructor model</h2>
-                <pre><code class="javascript" data-trim contenteditable>
+                <pre><code class="javascript">
 function Fruit (theColor, theSweetness, theFruitName, theNativeToLand) {
     this.color = theColor;
     this.sweetness = theSweetness;
@@ -200,16 +210,17 @@ function Fruit (theColor, theSweetness, theFruitName, theNativeToLand) {
         });
     }
 }
-</code></pre>
+                </code></pre>
             </section>
             <section>
-                <h2>Prototype model</h2>
-                <pre><code class="javascript" data-trim contenteditable>
-function Fruit () {}
+                <h2>Prototype model (1)</h2>
+                <pre><code class="javascript">
+function Fruit (name) {
+    this.fruitName = name;
+}
 
 Fruit.prototype.color = "Yellow";
 Fruit.prototype.sweetness = 7;
-Fruit.prototype.fruitName = "Generic Fruit";
 Fruit.prototype.nativeToLand = "USA";
 
 Fruit.prototype.showName = function () {
@@ -219,23 +230,151 @@ Fruit.prototype.showName = function () {
 Fruit.prototype.nativeTo = function () {
     console.log("Grown in:" + this.nativeToLand);
 }
-</code></pre>
+                </code></pre>
+            </section>
+            <section>
+                <h2>Prototype model (2)</h2>
+                <pre><code class="javascript">
+function Fruit (name) {
+    this.fruitName = name;
+}
+
+Fruit.prototype = {
+    constructor: Fruit,
+    color: "Yellow",
+    sweetness: 7,
+    fruitName: "Generic Fruit",
+    nativeToLand: "USA",
+    showName: function () {
+        console.log("This is a " + this.fruitName);
+    },
+    nativeTo: function () {
+        console.log("Grown in:" + this.nativeToLand);
+    }
+};
+                </code></pre>
             </section>
             <section>
                 <h2>Note:
                     <small>prototype</small>
                 </h2>
-                <pre><code class="javascript" data-trim contenteditable>
+                <pre><code class="javascript">
 // Prototype Attribute of Objects Created With a Constructor Function
 var Account = function () {};
 var userAccount = new Account ();
 // userAccount initialized with the Account ()
 // constructor and as such its prototype attribute (or prototype object)
 // is Account.prototype.
-</code></pre>
+                </code></pre>
             </section>
         </section>
 
+        <section>
+            <section>
+                <h2>Encapsulation</h2>
+                <ul>
+                    <li>Object encapsulation</li>
+                    <li>Functionality encapsulation</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Object encapsulation</h2>
+                <pre><code class="javascript">
+function Person(name) {
+    this.name = name;
+    var _name = function () {
+        return "My name is " + name;
+    };
+    this.prettyName = function () { return _name(); };
+}
+
+Person.prototype.public = function () {
+    this.newCar = "BMW";
+    return (function (name) {
+        var display = "Public is: " + name;
+        return display;
+    })(this.name);
+}
+                </code></pre>
+                <pre><code class="javascript">
+var peter = new Person("Peter");
+peter.prettyName(); // "My name is Peter"
+typeof peter.newCar; // "undefined"
+peter.public(); // "Public is: Peter"
+peter.newCar; // "BMW"
+typeof peter._name; // "undefined"
+typeof peter.public.display; // "undefined"
+                </code></pre>
+            </section>
+            <section>
+                <h2>Functionality encapsulation</h2>
+                <pre><code class="javascript">
+(function (window, $, obj, undefined) {
+...
+})(window, window.jQuery, myVar = myVar || {} , "undefined");
+                </code></pre>
+
+                <pre class="fragment"><code class="javascript">
+obj.name = "test"; // myVar ??
+obj = {"init" : "test"}; // myVar ??
+myVar = {}; // obj ???
+                </code></pre>
+                    <pre class="fragment"><code class="javascript">
+var myVar = {};
+(function (window, $, obj, undefined) {
+    obj.name = "test";
+        // {"obj":{"name":"test"},"myVar":{"name":"test"}}
+    obj = {"init" : "test"};
+        // {"obj":{"init":"test"},"myVar":{"name":"test"}}
+    myVar = {};
+        // {"obj":{"init":"test"},"myVar":{}}
+})(window, window.jQuery, myVar = myVar || {} , "undefined");
+// {"obj":"undefined","myVar":{}}
+
+                </code></pre>
+                <aside class="notes">
+var myVar = {};
+(function (window, $, obj, undefined) {
+    obj.name = "test";
+    console.dir(JSON.stringify({obj: obj, myVar: myVar}));
+        // {"obj":{"name":"test"},"myVar":{"name":"test"}}
+    obj = {"init" : "test"};
+    console.dir(JSON.stringify({obj: obj, myVar: myVar}));
+        // {"obj":{"init":"test"},"myVar":{"name":"test"}}
+    myVar = {};
+    console.dir(JSON.stringify({obj: obj, myVar: myVar}));
+        // {"obj":{"init":"test"},"myVar":{}}
+})(window, window.jQuery, myVar = myVar || {} , "undefined");
+console.dir(JSON.stringify({obj: typeof obj, myVar: myVar}));
+
+                </aside>
+
+            </section>
+            <section>
+                <h2>Namespace</h2>
+                <p>Object literal pattern</p>
+                <pre><code class="javascript">
+function namespace(namespaceString) {
+    var parts = namespaceString.split('.'),
+        parent = window,
+        currentPart = '';
+
+    for(var i = 0, length = parts.length; i < length; i++) {
+        currentPart = parts[i];
+        parent[currentPart] = parent[currentPart] || {};
+        parent = parent[currentPart];
+    }
+
+    return parent;
+}
+                </code></pre>
+                <aside class="notes">
+                    In many programming languages, namespacing is a technique employed to avoid collisions with other objects or
+                    variables in the global namespace. They're also extremely useful for helping organize blocks of functionality
+                    in your application into easily manageable groups that can be uniquely identified.
+                </aside>
+            </section>
+        </section>
         <section>
             <section>
                 <h2>Inheritance</h2>
@@ -247,9 +386,14 @@ var userAccount = new Account ();
             </section>
             <section>
                 <h2>Simple inheritance code</h2>
-                <pre><code class="javascript" data-trim contenteditable>
+                <pre><code class="javascript">
 function Mammal(name) {
     this.name = name;
+}
+
+Mammal.prototype = {
+    constructor: Mammal,
+    say:function () { return "I"; }
 }
 
 function Cat(name) {
@@ -257,14 +401,12 @@ function Cat(name) {
 }
 
 Cat.prototype = new Mammal();
-Cat.prototype.constructor = Cat;
-
-                        </code>
-                    </pre>
+Cat.prototype.say = function () { return "Meow!"; }
+                </code></pre>
             </section>
             <section>
                 <h2>Advanced inheritance</h2>
-                <pre><code class="javascript" data-trim contenteditable>
+                <pre><code class="javascript">
 if (typeof Object.create !== 'function') {// Crockford’s method
     Object.create = function (o) {
         function F() {}
@@ -273,7 +415,7 @@ if (typeof Object.create !== 'function') {// Crockford’s method
     };
 }
                 </code></pre>
-                <pre><code class="javascript" data-trim contenteditable>
+                <pre><code class="javascript">
 function inheritPrototype(childObject, parentObject) {
     // copy the properties and methods from the parentObject onto the childObject
     // So the copyOfParent object now has everything the parentObject has
@@ -284,9 +426,35 @@ function inheritPrototype(childObject, parentObject) {
     copyOfParent.constructor = childObject;
     // Then we set the childObject prototype to copyOfParent,
     // so that the childObject can in turn inherit everything
-    // from copyOfParent (from parentObject)ka rei
+    // from copyOfParent (from parentObject)
     childObject.prototype = copyOfParent;
 }
+                </code></pre>
+            </section>
+            <section>
+                <h2>Sample</h2>
+                <pre><code class="javascript">
+function Person(name) {
+    this.name = name;
+}
+Person.prototype.public = function () {
+    return (function (name) {
+        return "Public is: " + name;
+    })(this.name);
+}
+
+function Manager(name) {
+    Person.call(this, name)
+    this.taskList = [];
+}
+
+​// inherit the methods and properties from Person
+​inheritPrototype(Manager, Person);
+
+Manager.prototype.addTask function(task) {
+    this.taskList.add(task);
+}
+
                 </code></pre>
             </section>
         </section>
@@ -558,6 +726,28 @@ define(function() {
                 </code></pre>
             </section>
         </section>
+
+        <section>
+            <h2>OOP Lessons</h2>
+            <a href="http://www.codecademy.com/courses/objects-ii/">http://www.codecademy.com/courses/objects-ii/</a>
+        </section>
+
+        <section>
+            <section>
+                <h2>Untrusted</h2>
+                <a href="http://alexnisnevich.github.io/untrusted/" target="_blank"><img src="img/games/untrusted.png"
+                                                                                         height="300"/></a>
+            </section>
+            <section>
+                <h2>JS Dares</h2>
+                <a href="http://www.jsdares.com/" target="_blank"><img src="img/games/js_dares.png"/></a>
+            </section>
+            <section>
+                <h2>Code Combat</h2>
+                <a href="http://codecombat.com/play" target="_blank"><img src="img/games/code_combat.png" height="400"/></a>
+            </section>
+        </section>
+
 
         <section>
             <img src="img/questions.png" alt="" style="height:600px;border: none;box-shadow: none"/>
