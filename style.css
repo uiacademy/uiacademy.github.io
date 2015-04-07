@@ -66,6 +66,9 @@ a, a:hover, a:focus {
     display: inline-block;
     vertical-align: middle;
     margin: 0 10px 0 0;
+    background: url("revealjs/kayak-logo.png") no-repeat 50% 50%;
+    width: 187px;
+    height: 43px;
 }
 
 .team {
