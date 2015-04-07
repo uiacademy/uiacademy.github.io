@@ -43,17 +43,23 @@
 </div>
 
 <div class="reveal">
+    <!--
+        Komentarai is paskaitos:
+
+            Padaryti viska lietuviskai.
+            Kas yra global scope kas yra local scope.
+            Kas yra window object.
+            Atskirti i dvi paskaitas: OOP ir atskirai patterns
+            Encapsulation - papratesnius pavyzdzius
+            Global scope su paveiksleliais, kaip persiduoda informacija i funkcijas.
+     -->
 
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
         <section>
             <h1>OOP</h1>
-
             <h3>in javascript</h3>
-
-            <p>
-                <small>Ramūnas Kiupelis</small>
-            </p>
+            <p><small>Ramūnas Kiupelis</small></p>
         </section>
         <section>
             <h2>Agenda</h2>
@@ -61,8 +67,8 @@
                 <li>What is object?</li>
                 <li>Why to use OOP?</li>
                 <li>How to create object?</li>
-                <li>Encapsulation</li>
                 <li>Inheritance</li>
+                <li>Encapsulation</li>
                 <li>Javascript models (MVC, observer, singleton)</li>
                 <li>RequireJS</li>
             </ul>
@@ -271,116 +277,6 @@ var userAccount = new Account ();
 
         <section>
             <section>
-                <h2>Encapsulation</h2>
-                <ul>
-                    <li>Object encapsulation</li>
-                    <li>Functionality encapsulation</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Object encapsulation</h2>
-                <pre><code class="javascript">
-function Person(name) {
-    this.name = name;
-    var _name = function () {
-        return "My name is " + name;
-    };
-    this.prettyName = function () { return _name(); };
-}
-
-Person.prototype.public = function () {
-    this.newCar = "BMW";
-    return (function (name) {
-        var display = "Public is: " + name;
-        return display;
-    })(this.name);
-}
-                </code></pre>
-                <pre><code class="javascript">
-var peter = new Person("Peter");
-peter.prettyName(); // "My name is Peter"
-typeof peter.newCar; // "undefined"
-peter.public(); // "Public is: Peter"
-peter.newCar; // "BMW"
-typeof peter._name; // "undefined"
-typeof peter.public.display; // "undefined"
-                </code></pre>
-            </section>
-            <section>
-                <h2>Functionality encapsulation</h2>
-                <pre><code class="javascript">
-(function (window, $, obj, undefined) {
-...
-})(window, window.jQuery, myVar = myVar || {} , "undefined");
-                </code></pre>
-
-                <pre class="fragment"><code class="javascript">
-obj.name = "test"; // myVar ??
-obj = {"init" : "test"}; // myVar ??
-myVar = {}; // obj ???
-                </code></pre>
-                    <pre class="fragment"><code class="javascript">
-var myVar = {};
-(function (window, $, obj, undefined) {
-    obj.name = "test";
-        // {"obj":{"name":"test"},"myVar":{"name":"test"}}
-    obj = {"init" : "test"};
-        // {"obj":{"init":"test"},"myVar":{"name":"test"}}
-    myVar = {};
-        // {"obj":{"init":"test"},"myVar":{}}
-})(window, window.jQuery, myVar = myVar || {} , "undefined");
-// {"obj":"undefined","myVar":{}}
-
-                </code></pre>
-                <aside class="notes">
-var myVar = {};
-(function (window, $, obj, undefined) {
-    obj.name = "test";
-    console.dir(JSON.stringify({obj: obj, myVar: myVar}));
-        // {"obj":{"name":"test"},"myVar":{"name":"test"}}
-    obj = {"init" : "test"};
-    console.dir(JSON.stringify({obj: obj, myVar: myVar}));
-        // {"obj":{"init":"test"},"myVar":{"name":"test"}}
-    myVar = {};
-    console.dir(JSON.stringify({obj: obj, myVar: myVar}));
-        // {"obj":{"init":"test"},"myVar":{}}
-})(window, window.jQuery, myVar = myVar || {} , "undefined");
-console.dir(JSON.stringify({obj: typeof obj, myVar: myVar}));
-
-                </aside>
-
-            </section>
-            <section>
-                <h2>Namespace</h2>
-                <p>Object literal pattern</p>
-                <pre><code class="javascript">
-function namespace(namespaceString) {
-    var parts = namespaceString.split('.'),
-        parent = window,
-        currentPart = '';
-
-    for(var i = 0, length = parts.length; i < length; i++) {
-        currentPart = parts[i];
-        parent[currentPart] = parent[currentPart] || {};
-        parent = parent[currentPart];
-    }
-
-    return parent;
-}
-                </code></pre>
-                <pre class="fragment"><code class="javascript">
-var module = namespace("very.long.module.path");
-very.long.module.path === module;
-                </code></pre>
-                <aside class="notes">
-                    In many programming languages, namespacing is a technique employed to avoid collisions with other objects or
-                    variables in the global namespace. They're also extremely useful for helping organize blocks of functionality
-                    in your application into easily manageable groups that can be uniquely identified.
-                </aside>
-            </section>
-        </section>
-        <section>
-            <section>
                 <h2>Inheritance</h2>
             </section>
 
@@ -401,7 +297,8 @@ Mammal.prototype = {
 }
 
 function Cat(name) {
-    this.name = name;
+    this.name = name; // Mammal.call(this, name);
+    this.type = "cat";
 }
 
 Cat.prototype = new Mammal();
@@ -460,6 +357,114 @@ Manager.prototype.addTask function(task) {
 }
 
                 </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Encapsulation</h2>
+                <ul>
+                    <li>Object encapsulation</li>
+                    <li>Functionality encapsulation</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Object encapsulation</h2>
+                <pre><code class="javascript">
+function Person(first) {
+    this.first = first;
+
+    var _name = function () {
+        return "My name is " + first;
+    };
+    this.prettyName = function () { return _name(); };
+}
+
+Person.prototype.displayName = function () {
+    this.newCar = "BMW";
+    var display = this.first;
+    return "Display name: " + display;
+}
+                </code></pre>
+                <pre><code class="javascript">
+var peter = new Person("Peter");
+peter.prettyName(); // "My name is Peter"
+typeof peter.newCar; // "undefined"
+peter.displayName(); // "Display name: Peter"
+peter.newCar; // "BMW"
+typeof peter._name; // "undefined"
+typeof peter.displayName.display; // "undefined"
+                </code></pre>
+            </section>
+            <section>
+                <h2>Functionality encapsulation</h2>
+                <pre><code class="javascript">
+(function (window, $, obj, undefined) {
+...
+})(window, window.jQuery, myVar = myVar || {} , "undefined");
+                </code></pre>
+
+                <pre class="fragment"><code class="javascript">
+obj.name = "test"; // myVar ??
+obj = {"init" : "test"}; // myVar ??
+myVar = {}; // obj ???
+                </code></pre>
+                    <pre class="fragment"><code class="javascript">
+var myVar = {};
+(function (window, $, obj, undefined) {
+    obj.name = "test";
+        // {"obj":{"name":"test"},"myVar":{"name":"test"}}
+    obj = {"init" : "test"};
+        // {"obj":{"init":"test"},"myVar":{"name":"test"}}
+    myVar = {};
+        // {"obj":{"init":"test"},"myVar":{}}
+})(window, window.jQuery, myVar = myVar || {} , "undefined");
+// {"obj":"undefined","myVar":{}}
+
+                </code></pre>
+                <aside class="notes">
+var myVar = {};
+(function (window, $, obj, undefined) {
+    obj.name = "test";
+    console.dir(JSON.stringify({obj: obj, myVar: myVar}));
+        // {"obj":{"name":"test"},"myVar":{"name":"test"}}
+    obj = {"init" : "test"};
+    console.dir(JSON.stringify({obj: obj, myVar: myVar}));
+        // {"obj":{"init":"test"},"myVar":{"name":"test"}}
+    myVar = {};
+    console.dir(JSON.stringify({obj: obj, myVar: myVar}));
+        // {"obj":{"init":"test"},"myVar":{}}
+})(window, window.jQuery, myVar = myVar || {} , "undefined");
+console.dir(JSON.stringify({obj: typeof obj, myVar: myVar}));
+                </aside>
+
+            </section>
+            <section>
+                <h2>Namespace</h2>
+                <p>Object literal pattern</p>
+                <pre><code class="javascript">
+function namespace(namespaceString) {
+    var parts = namespaceString.split('.'),
+        parent = window,
+        currentPart = '';
+
+    for(var i = 0, length = parts.length; i < length; i++) {
+        currentPart = parts[i];
+        parent[currentPart] = parent[currentPart] || {};
+        parent = parent[currentPart];
+    }
+
+    return parent;
+}
+                </code></pre>
+                <pre class="fragment"><code class="javascript">
+var module = namespace("very.long.module.path");
+very.long.module.path === module;
+                </code></pre>
+                <aside class="notes">
+                    In many programming languages, namespacing is a technique employed to avoid collisions with other objects or
+                    variables in the global namespace. They're also extremely useful for helping organize blocks of functionality
+                    in your application into easily manageable groups that can be uniquely identified.
+                </aside>
             </section>
         </section>
 
