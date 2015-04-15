@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+	</head>
+
+	<body>
+        <div class="page">
+            <div class="header">
+                <span class="logo"></span> UI AKADEMIJA
+            </div>
+            <div class="menu">
+                <a class="item mob-size1of1" href="index.html" >pradinis</a>
+                <a class="item mob-size1of1" href="lessons.html" >paskaitos</a>
+                <a class="item mob-size1of1" href="team.html" >komanda</a>
+            </div>
+            <div class="content">
+                <ol>
+                    <li><a href="/docs/ui-intro.pdf">Modulio įvadinė paskaita</a></li>
+                    <li><a href="/docs/HTML_ir_CSS_pradziamokslis.pdf">HTML ir CSS pradžiamokslis</a></li>
+                    <li><a href="/docs/JS_pradziamokslis.pdf">Javascript pradžiamokslis</a></li>
+                    <li><a href="/oop/index.html">Objektinis Javascript</a></li>
+                    <li><a href="/WebFrameworks/index.html">Web aplikacijos</a></li>
+                    <li><a href="/TESTING/index.html">Testavimas</a></li>
+                    <li><a href="/PRACTICES/index.html">Praktikos, bibliotekos ir įrankiai</a></li>
+                    <li><a href="/RWD/index.html">Prisitaikančios svetainės</a></li>
+                    <li><a href="/html5/index.html">Naujausios technologijos ir ateitis</a></li>
+                    <li><a href="#">Svetainių greitaveika</a></li>
+                    <li><a href="#">Chrome DevTools</a></li>
+                    <li><a href="#">SEO, AB testavimas, UX</a></li>
+                </ol>
+		  <hr>
+	
+		  </div>
+            <div class="footer">
+                &copy; UI AKADEMIJA
+            </div>
+        </div>
+	</body>
+</html>
