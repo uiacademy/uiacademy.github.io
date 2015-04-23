@@ -4,6 +4,10 @@ CACHE MANIFEST
 ../revealjs/lib/css/zenburn.css
 
 styles/fonts.css
+index.html
+src/*
+styles/*
+
 
 
 NETWORK:
