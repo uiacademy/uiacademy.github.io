@@ -1,0 +1,90 @@
+body, html {
+	background-color: grey;
+	height: 100%;
+}
+ 
+
+.header {
+	background: yellow;
+	height:150px;
+	margin:0 auto;
+	font-size: 20px;
+	/*width:150px; */
+}
+
+.footer {
+	background: red;
+	height:100px;
+	position:absolute;
+	width: 100%;
+	bottom: 0;
+	left:0;
+	margin:0 auto;
+	/*width:960px; */
+}
+
+.content {
+ 	background-color: green;
+ 	padding: 100px; 
+ 	padding-bottom: 200px;
+ 	font-style: 
+}
+
+.viskas {
+	min-height:100%;
+	position: relative;
+}
+
+.centras {
+	margin:0 auto;
+	width:960px;
+}
+
+.kaire25 {
+	width:25%; 
+	float:left;
+ }
+
+.desine25 {
+	width:75%;
+	float:right;
+}
+
+.valymui {
+	clear:both;
+}
+
+.listedItem {
+	    height:50px;
+        width:120px;
+        border-color:#6495ED;
+        background-color: #BCD2EE;
+        border-radius:5px;
+        margin:10px 0 0 0;
+        text-align:center;
+        line-height: 3;
+}
+
+.media {
+    margin:10px;
+}
+.media, .media-bd {
+    overflow:hidden; 
+    _overflow:visible; 
+    zoom:1;
+}
+.media-img {
+    float:left; 
+    margin-right: 10px; 
+    display:block;
+}
+
+#img {
+	width:200px;
+    height:200px;
+}
+
+.form-text {
+	font-size: 10px;
+	color:red;
+}

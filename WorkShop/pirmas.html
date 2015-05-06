@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="simple.css">
+	</head>
+	<body>
+
+		<div class="viskas">
+			<div class="header">headeris</div>
+			<div class="content">
+				<!--<div class="kaire"></div> -->
+				<div class="centras">
+					<div class="kaire25">
+						<div id="kairejId"></div>
+						     <div id="sarasasKairej"></div>
+					 </div>
+					<div class="desine75">
+
+					</div>
+					<div class="valymui"></div>
+				</div>
+				<!--	<div class="desine>"></div> -->
+			</div>
+			<form id="forma">
+				Title: <input type="text" name="url" class="input-url" /> <br>
+				Url: <input type="text" name="title" class="input-title" /><br />
+				Body:<textarea class="textarea-description"></textarea>
+				<br>
+
+				<input type="submit" value="Pridėti">
+			</form>
+
+
+		</div>
+
+		<script id="template" type="text/bilekas">
+
+			<a class="item" data-id="{{=it.id}}"> {{=it.title}} </a>
+
+		</script>
+
+        <script id="mediaTemplate" type="text/desine">
+        	<div class="media">
+						<div class="media-img">
+							 <p>{{=it.url}}</p>
+					 	</div>
+					 	<div class="media-bd">
+					 		 <p>{{=it.title}}</p>
+					 	</div>
+					 	<div class="media-bd">
+					 		 <p>{{=it.description}}</p>
+					 	</div>
+ 					</div>
+        </script>
+
+		<script src="doT.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script type='text/javascript' src='script.js'></script>
+
+	</body>
+</html>
