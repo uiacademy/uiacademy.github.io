@@ -4,15 +4,27 @@ function Note(url, title, description) {
     this.title = title;
     this.description = description;
 }
-Note.prototype.generateUUID = function () {
-    /*jslint bitwise: true */
-    var d = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = (d + Math.random() * 16) % 16 | 0;
-        d = Math.floor(d / 16);
-        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    });
-    return uuid;
+Note.prototype = {
+    generateUUID: function () {
+        /*jslint bitwise: true */
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        return uuid;
+    },
+
+    validate: function () {
+        if (this.title === "") {
+            throw Error("Title can't be null");
+        }
+        var isEmpty = this.title.replace(new RegExp("[a-z]", "gi"), "");
+        if (isEmpty !== "") {
+            throw Error("Invalid char use only [a-z]");
+        }
+    }
 };
 
 function Model() {
@@ -26,6 +38,7 @@ Model.prototype = {
 
     create: function (url, title, desctiption) {
         var note = new Note(url, title, desctiption);
+        note.validate();
         this.notes[note.id] = note;
         this.save();
     },
@@ -142,7 +155,12 @@ Controller.prototype = {
             view = this.view;
 
         $(document).bind("notes.create", function (e, note) {
-            model.create(note.url, note.title, note.description);
+            try {
+                model.create(note.url, note.title, note.description);
+            } catch(e) {
+                alert (e);
+            }
+
             view.displayItems(model.read());
         });
 
