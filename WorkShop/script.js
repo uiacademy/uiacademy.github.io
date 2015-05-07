@@ -5,6 +5,7 @@ function Note(url, title, description) {
     this.description = description;
 }
 Note.prototype = {
+    constructor: Note,
     generateUUID: function () {
         /*jslint bitwise: true */
         var d = new Date().getTime();
