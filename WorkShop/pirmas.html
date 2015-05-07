@@ -42,16 +42,20 @@
 
         <script id="mediaTemplate" type="text/desine">
         	<div class="media">
-						<div class="media-img">
-							 <p>{{=it.url}}</p>
-					 	</div>
-					 	<div class="media-bd">
-					 		 <p>{{=it.title}}</p>
-					 	</div>
-					 	<div class="media-bd">
-					 		 <p>{{=it.description}}</p>
-					 	</div>
- 					</div>
+				<div class="media-img">
+					 <p>{{=it.url}}</p>
+				</div>
+				<div class="media-bd">
+					 <p>{{=it.title}}</p>
+				</div>
+				<div class="media-bd">
+			 		<p>{{=it.description}}</p>
+				</div>
+
+				<div class="actions" data-id="{{=it.id}}">
+					<a href="" class="delete">Delete</a>
+				</div>
+			</div>
         </script>
 
 		<script src="doT.min.js"></script>
