@@ -1,0 +1,252 @@
+body, html {
+	top : 0;
+	left: 0;
+	padding: 0;
+	margin: 0;
+
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.231;
+    color: #1a1a1a;
+    min-width: 320px;
+}
+
+.header {
+	background-color: #212121;
+	height: 57px;
+	line-height: 57px;
+}
+
+.page {
+	max-width: 920px;
+	padding: 0 20px;
+	margin: 0 auto;
+}
+
+
+.logo {
+	vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    height: 32px;
+    width: 142px;
+    background-image: url("https://www.kayak.com/res/images/kayak-logo-challenger-short.png?v=1f1c036e027073e26ef494fa93384d6005de9431");
+    background-position: 0 center;
+    background-repeat: no-repeat;
+}
+
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+	.logo {
+	    background-image: url("https://www.kayak.com/res/images/kayak-logo-challenger-short_2x.png?v=b6c86bc9769153c4b220df4cde61271574f7df69");
+	    background-size: 142px 32px;
+	}
+}
+
+.academy {
+	display: inline-block;
+	vertical-align: middle;
+	color: #ff690f;
+    text-transform: uppercase;	
+    font-weight: 200;
+    font-size: 18px;
+    margin-left: 15px;
+    letter-spacing: 4px;
+
+}
+
+a {
+	text-decoration: none;
+	color: #1a1a1a;
+	font-size: inherit;
+} 
+
+a:hover {
+	text-decoration: underline;
+}
+
+.menu {
+	line-height: 57px;
+	float: right;
+}
+
+.item {
+	color: #ccc;
+	text-transform: uppercase;	
+	display: inline-block;
+	vertical-align: middle;
+	letter-spacing: 1px;
+	font-size: 13px;
+}
+.footer {
+	text-align: center;
+	padding:20px;
+    background-color: #1b1b1b;
+    color: #acacaf;
+}
+
+.content {
+	padding: 20px 0;
+}
+
+.c2c {
+	color: #ff690f;
+}
+h1 {
+	font-size: 28px;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+
+.sub-line {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+h2 {
+	font-size: 24px;
+	font-weight: normal;
+}
+h3 {
+	font-size: 21px;
+	font-weight: normal;
+	margin: 0;
+}
+
+h4 { 
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.post {
+	margin-bottom: 30px;
+}
+p {
+	margin-bottom: 20px;
+}
+.lecturers{
+
+
+	
+
+	
+}
+
+.lecturer{
+	margin-top:-1px;
+	padding:20px;
+	border: 1px solid #e2e2e2;
+}	
+
+.photo {
+	float: left;
+	max-width: 25%;
+	margin-right: 20px;
+}
+
+.photo img {
+	max-width: 280px;
+	width: 100%;
+
+}
+
+.text {
+
+}
+
+.job-title {
+	font-size: 15px;
+	font-style: italic;
+}
+.company {
+	color: #ff690f;
+}
+
+
+
+.table {
+	padding:20px 0;
+}
+
+table {
+	border: 1px solid #e2e2e2;
+	border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table p {
+	margin-bottom: 0;
+}
+
+td {
+	border: 1px solid #e2e2e2;
+	padding: 10px;
+	vertical-align: top;
+}
+
+tr:first-child td {
+	font-weight: bold;
+}
+.number {
+	width: 25px;
+
+}
+
+
+@media all and (max-width: 440px) {
+
+	body, html {
+		font-size: 13px;
+	}
+	h1 {
+		font-size: 21px;
+	}
+	.sub-line {
+		font-size: 14px;
+	}
+	h2 {
+		font-size: 19px;
+		margin-top: 0px;
+	}
+	h3 {
+		font-size: 17px;
+	}
+	h4 {
+		font-size: 15px;
+	}
+	.header {
+		height: auto;
+
+	}
+	.academy {
+		font-size: 16px;
+		letter-spacing: 1px;
+		float: right;
+	}
+	.menu {
+		display: none;
+	}
+	.post, .sub-line {
+		margin-bottom: 18px;
+	}
+	.lecturer {
+		padding:5px;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
