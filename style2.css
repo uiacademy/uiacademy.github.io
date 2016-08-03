@@ -165,6 +165,7 @@ p {
 .job-title {
 	font-size: 15px;
 	font-style: italic;
+	margin-bottom: 10px;
 }
 .company {
 	color: #ff690f;
