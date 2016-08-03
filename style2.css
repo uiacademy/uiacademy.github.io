@@ -142,10 +142,13 @@ p {
 	padding:20px;
 	border: 1px solid #e2e2e2;
 }	
-
+.lecturer p{
+	margin: 0;
+	margin-bottom: 10px;
+}
 .photo {
 	float: left;
-	max-width: 25%;
+	max-width: 30%;
 	margin-right: 20px;
 }
 
@@ -181,7 +184,8 @@ table {
 }
 
 table p {
-	margin-bottom: 0;
+	margin: 0;
+
 }
 
 td {
@@ -203,6 +207,7 @@ tr:first-child td {
 
 	body, html {
 		font-size: 13px;
+		line-height: 1.5;
 	}
 	h1 {
 		font-size: 21px;
@@ -236,7 +241,22 @@ tr:first-child td {
 		margin-bottom: 18px;
 	}
 	.lecturer {
-		padding:5px;
+		padding:20px;
+	}
+
+	strong {
+		display: block;
+		margin-top:5px;
+	}
+
+
+	.photo {
+		margin-bottom: 5px;
+	}
+
+	.job-title {
+		font-size: 13px;
+		margin-bottom: 10px;
 	}
 
 }
