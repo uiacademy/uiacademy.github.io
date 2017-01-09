@@ -274,6 +274,10 @@ tr:first-child td {
 	border-radius: 5px;
 }
 
+h3 .new {
+	display: inline-block;
+	vertical-align: top;
+}
 
 
 
