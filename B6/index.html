@@ -1,0 +1,57 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js?1"></script>
+	<style>
+	.has-transition {
+	   -webkit-transition: margin-left 1s ease-out;
+	      -moz-transition: margin-left 1s ease-out;
+	        -o-transition: margin-left 1s ease-out;
+	           transition: margin-left 1s ease-out;
+	}
+	</style>
+
+</head>
+<body>
+<div id="targetElemId" class="has-transition" >Hello world</div>
+<script >
+(function(){
+
+
+// our element that has a "has-transition" class by default
+var $targetElem = $('#targetElemId');
+
+// remove the transition class
+$targetElem.removeClass('has-transition');
+
+// change the property expecting the transition to be off, as the class is not there
+// anymore
+$targetElem.css('margin-left', 100);
+
+// put the transition class back
+$targetElem.addClass('has-transition');
+
+// change the property
+$targetElem.css('margin-left', 50);
+
+//return
+
+//The changes are cached and applied only at the end of the code block. What we need is a forced reflow, which we can achieve by making the following changes:
+// remove the transition class
+$targetElem.removeClass('has-transition');
+
+// change the property
+$targetElem.css('margin-left', 100);
+
+// trigger a forced reflow, so that changes in a class/property get applied immediately
+$targetElem[0].offsetHeight; // an example, other properties would work, too
+
+// put the transition class back
+$targetElem.addClass('has-transition');
+
+// change the property
+$targetElem.css('margin-left', 50);
+
+})();
+</script>
+</body>
+</html>

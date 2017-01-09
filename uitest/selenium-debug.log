@@ -1,0 +1,43 @@
+13:59:20.464 INFO - Launching a standalone Selenium Server
+13:59:20.490 INFO - Java: Oracle Corporation 25.91-b14
+13:59:20.491 INFO - OS: Mac OS X 10.11.6 x86_64
+13:59:20.500 INFO - v2.53.1, with Core v2.53.1. Built from revision a36b8b1
+13:59:20.546 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match the current platform MAC
+13:59:20.546 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+registration capabilities Capabilities [{browserName=MicrosoftEdge, version=, platform=WINDOWS}] does not match the current platform MAC
+13:59:20.547 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+13:59:20.547 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+13:59:20.548 INFO - Driver class not found: org.openqa.selenium.htmlunit.HtmlUnitDriver
+13:59:20.548 INFO - Driver provider org.openqa.selenium.htmlunit.HtmlUnitDriver is not registered
+13:59:20.588 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+13:59:20.588 INFO - Selenium Server is up and running
+13:59:20.756 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=First Test, browserName=firefox, javascriptEnabled=true, platform=ANY}]])
+13:59:20.763 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, marionette=true, name=First Test, browserName=firefox, javascriptEnabled=true, platform=ANY}]
+1477047561434	Marionette	INFO	Listening on port 50167
+1477047562353	Marionette	INFO	startBrowser c8f74233-67f8-aa44-b03f-922883163e9e
+13:59:22.482 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=First Test, browserName=firefox, javascriptEnabled=true, platform=ANY}]]
+13:59:22.492 INFO - Executing: [get: http://www.google.com])
+13:59:23.313 INFO - Done: [get: http://www.google.com]
+13:59:23.321 INFO - Executing: [find elements: By.cssSelector: body])
+13:59:23.338 INFO - Done: [find elements: By.cssSelector: body]
+13:59:23.341 INFO - Executing: [is displayed: 0 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: body]])
+13:59:23.358 INFO - Done: [is displayed: 0 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: body]]
+13:59:23.364 INFO - Executing: [find element: By.cssSelector: input[type=text]])
+13:59:23.370 INFO - Done: [find element: By.cssSelector: input[type=text]]
+13:59:23.373 INFO - Executing: [send keys: 1 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: input[type=text]], [n, i, g, h, t, w, a, t, c, h]])
+13:59:23.426 INFO - Done: [send keys: 1 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: input[type=text]], [n, i, g, h, t, w, a, t, c, h]]
+13:59:23.432 INFO - Executing: [find elements: By.cssSelector: button[name=btnG]])
+13:59:23.438 INFO - Done: [find elements: By.cssSelector: button[name=btnG]]
+13:59:23.441 INFO - Executing: [is displayed: 2 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: button[name=btnG]]])
+13:59:23.454 INFO - Done: [is displayed: 2 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: button[name=btnG]]]
+13:59:23.457 INFO - Executing: [find element: By.cssSelector: button[name=btnG]])
+13:59:23.463 INFO - Done: [find element: By.cssSelector: button[name=btnG]]
+13:59:23.466 INFO - Executing: [click: 2 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: button[name=btnG]]])
+13:59:23.540 INFO - Done: [click: 2 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: button[name=btnG]]]
+13:59:24.550 INFO - Executing: [find element: By.cssSelector: #main])
+13:59:24.561 INFO - Done: [find element: By.cssSelector: #main]
+13:59:24.563 INFO - Executing: [get text: 3 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: #main]])
+13:59:25.124 INFO - Done: [get text: 3 [[MarionetteDriver: firefox on MAC (c8f74233-67f8-aa44-b03f-922883163e9e)] -> css selector: #main]]
+13:59:25.129 INFO - Executing: [delete session: d582b984-35e0-4a33-9f73-93971119900f])
+13:59:25.238 INFO - Done: [delete session: d582b984-35e0-4a33-9f73-93971119900f]

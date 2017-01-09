@@ -262,10 +262,17 @@ tr:first-child td {
 
 }
 
+
 .qoute {
 	font-style: italic;
 }
-
+.new {
+	color:white;
+	background-color:#ff690f; 
+	padding: 3px 5px;
+	font-size: 12px;
+	border-radius: 5px;
+}
 
 
 

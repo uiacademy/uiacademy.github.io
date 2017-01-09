@@ -1,0 +1,51 @@
+<html>
+<head></head>
+<body>
+<script>
+var bodystyle = document.body.style;
+var computed;
+if (document.body.currentStyle) {
+ computed = document.body.currentStyle;
+} else {
+ computed = document.defaultView.getComputedStyle(document.body, '');
+}
+
+function touch(){
+ bodystyle.color = 'red';
+ bodystyle.padding = '1px';
+ tmp = computed.backgroundColor;
+ bodystyle.color = 'white';
+ bodystyle.padding = '2px';
+ tmp = computed.backgroundImage;
+ bodystyle.color = 'green';
+ bodystyle.padding = '3px';
+ tmp = computed.backgroundAttachment;
+}
+
+function touchlast() {
+ bodystyle.color = 'yellow';
+ bodystyle.padding = '4px';
+ bodystyle.color = 'pink';
+ bodystyle.padding = '5px';
+ bodystyle.color = 'blue';
+ bodystyle.padding = '6px';
+ tmp = computed.backgroundColor;
+ tmp = computed.backgroundImage;
+ tmp = computed.backgroundAttachment;
+
+}
+
+var a = false;
+document.body.onclick = function() {
+ if (!a) {
+   touch();
+ } else {
+   touchlast();
+ }
+ a = !a;
+
+}
+</script>
+dude
+</body>
+</html>
