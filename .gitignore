@@ -1,3 +1,5 @@
 studapp/log/*
 !studapp/log/.gitkeep
 .vagrant/machines
+.idea/*
+*.iml
