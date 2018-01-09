@@ -30,8 +30,8 @@ body, html {
     display: inline-block;
     overflow: hidden;
     height: 32px;
-    width: 142px;
-    background-image: url("https://www.kayak.com/res/images/kayak-logo-challenger-short.png?v=1f1c036e027073e26ef494fa93384d6005de9431");
+    width: 168px;
+    background-image: url("images/kayak_logo.png");
     background-position: 0 center;
     background-repeat: no-repeat;
 }
@@ -40,8 +40,8 @@ body, html {
 (-webkit-min-device-pixel-ratio: 2), 
 (min-resolution: 192dpi) { 
 	.logo {
-	    background-image: url("https://www.kayak.com/res/images/kayak-logo-challenger-short_2x.png?v=b6c86bc9769153c4b220df4cde61271574f7df69");
-	    background-size: 142px 32px;
+	    background-image: url("images/kayak_logo_2x.png");
+	    background-size: 168px 32px;
 	}
 }
 
