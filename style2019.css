@@ -20,12 +20,22 @@ iframe {
 	background-color: #212121;
 	height: 57px;
 	line-height: 57px;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 }
 
 .page {
 	max-width: 920px;
-	padding: 0 20px 80px 20px;
+	padding: 57px 20px 80px 20px;
 	margin: 0 auto;
+}
+
+.header .page {
+	padding-bottom: 0;
+	padding-top: 0;
 }
 
 
@@ -218,6 +228,16 @@ tr:first-child td {
 	}
 }
 
+@media all and (max-width: 560px) {
+	iframe {
+		display: none;
+	}
+
+	.menu {
+		display: none;
+	}
+}
+
 @media all and (max-width: 440px) {
 
 	body, html {
@@ -245,13 +265,9 @@ tr:first-child td {
 
 	}
 	.academy {
-		font-size: 16px;
-		letter-spacing: 1px;
-		float: right;
-	}
-	.menu {
 		display: none;
 	}
+
 	.post, .sub-line {
 		margin-bottom: 18px;
 	}
