@@ -12,6 +12,10 @@ body, html {
     min-width: 320px;
 }
 
+iframe {
+	border: none;
+}
+
 .header {
 	background-color: #212121;
 	height: 57px;
