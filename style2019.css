@@ -212,6 +212,11 @@ tr:first-child td {
 
 }
 
+@media all and (max-width: 920px) {
+	iframe {
+		display: none;
+	}
+}
 
 @media all and (max-width: 440px) {
 
